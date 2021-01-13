@@ -108,7 +108,7 @@ const Login = ({ history }) => {
         <input
           type="email"
           className="form-control"
-          value={email}
+          // value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Your email"
           autoFocus
@@ -119,7 +119,7 @@ const Login = ({ history }) => {
         <input
           type="password"
           className="form-control"
-          value={password}
+          // value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Your password"
         />
