@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Select } from "antd";
+import { getBrands } from "../../functions/brand"
+
 
 const { Option } = Select;
 
@@ -9,9 +11,24 @@ const ProductCreateForm = ({
   setValues,
   values,
   handleCatagoryChange,
+  handleSubCatagoryChange,
   subOptions,
   showSub,
+  showSecondSub,
+  secondSubOptions,
+  handlebrandChange
 }) => {
+
+  const [brandss, setBrands] = useState([]);
+
+
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  const loadCategories = () =>
+    getBrands().then((c) => setBrands(c.data));
+
   // destructure
   const {
     title,
@@ -24,6 +41,8 @@ const ProductCreateForm = ({
     category,
     ShelfLife,
     subs,
+    sub,
+    secondSubs,
     shipping,
     quantity,
     images,
@@ -35,7 +54,8 @@ const ProductCreateForm = ({
 
   return (
     <form onSubmit={handleSubmit}>
-        <div className="form-group">
+
+      <div className="form-group">
         <label>SKU ID</label>
         <input
           type="text"
@@ -130,6 +150,16 @@ const ProductCreateForm = ({
       </div>
 
       {/* <div className="form-group">
+        <label>Brand</label>
+        <input
+          type="text"
+          name="brand"
+          className="form-control"
+          onChange={handleChange}
+        />
+      </div> */}
+
+      {/* <div className="form-group">
         <label>Color</label>
         <select name="color" className="form-control" onChange={handleChange}>
           <option>Please select</option>
@@ -141,15 +171,33 @@ const ProductCreateForm = ({
         </select>
       </div> */}
 
+      {/* <div className="form-group">
+        <label>Brand</label>
+        <select name="brand" className="form-control" onChange={handlebrandChange}>
+          <option>Please select</option>
+          {brands.length > 0 &&
+            brands.map((b) => (
+              <option key={b._id} value={b._id}>
+                {b.name}
+              </option>
+            ))}
+        </select>
+      </div> */}
+
       <div className="form-group">
         <label>Brand</label>
-        <select name="brand" className="form-control" onChange={handleChange}>
+        <select
+          name="brand"
+          className="form-control"
+          onChange={handleChange}
+        >
           <option>Please select</option>
-          {brands.map((b) => (
-            <option key={b} value={b}>
-              {b}
-            </option>
-          ))}
+          {brandss.length > 0 &&
+            brandss.map((c) => (
+              <option key={c._id} value={c._id}>
+                {c.name}
+              </option>
+            ))}
         </select>
       </div>
 
@@ -171,6 +219,29 @@ const ProductCreateForm = ({
       </div>
 
       {showSub && (
+        <div className="form-group">
+        <label>Sub Category</label>
+        <select
+          name="subs"
+          // value={subs}
+          // onChange={(value) => setValues({ ...values, subs: value })}
+          className="form-control"
+          onChange={handleSubCatagoryChange}
+        >
+          <option>Please select</option>
+          {subOptions.length > 0 &&
+            subOptions.map((s) => (
+              <option key={s._id} value={s._id}>
+                {s.name}
+              </option>
+            ))}
+        </select>
+      </div> 
+
+
+      )}
+
+      {/* {showSub && (
         <div>
           <label>Sub Categories</label>
           <Select
@@ -184,6 +255,26 @@ const ProductCreateForm = ({
               subOptions.map((s) => (
                 <Option key={s._id} value={s._id}>
                   {s.name}
+                </Option>
+              ))}
+          </Select>
+        </div>
+      )} */}
+
+      {showSecondSub && (
+        <div>
+          <label>Second Sub Categories</label>
+          <Select
+            mode="multiple"
+            style={{ width: "100%" }}
+            placeholder="Please select"
+            value={secondSubs}
+            onChange={(value) => setValues({ ...values, secondSubs: value })}
+          >
+            {secondSubOptions.length &&
+              secondSubOptions.map((t) => (
+                <Option key={t._id} value={t._id}>
+                  {t.name}
                 </Option>
               ))}
           </Select>

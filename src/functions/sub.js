@@ -26,3 +26,6 @@ export const createSub = async (sub, authtoken) =>
       authtoken,
     },
   });
+
+  export const getSubsSecond = async (_id) =>
+  await axios.get(`${process.env.REACT_APP_API}/sub/secondSubs/${_id}`);

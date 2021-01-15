@@ -7,6 +7,7 @@ import { auth } from "./firebase";
 import { useDispatch } from "react-redux";
 import { currentUser } from "./functions/auth";
 import { LoadingOutlined } from "@ant-design/icons";
+import secondSubCreate from "./pages/admin/secondSub/secondSubCreate";
 
 // import Login from "./pages/auth/Login";
 // import Register from "./pages/auth/Register";
@@ -61,6 +62,8 @@ const CategoryUpdate = lazy(() =>
 );
 const SubCreate = lazy(() => import("./pages/admin/sub/SubCreate"));
 const SubUpdate = lazy(() => import("./pages/admin/sub/SubUpdate"));
+const SecondSubCreate = lazy(() => import("./pages/admin/secondSub/secondSubCreate"));
+const brandCreate = lazy(() => import("./pages/admin/brands/brandCreate"));
 const ProductCreate = lazy(() => import("./pages/admin/product/ProductCreate"));
 const AllProducts = lazy(() => import("./pages/admin/product/AllProducts"));
 const ProductUpdate = lazy(() => import("./pages/admin/product/ProductUpdate"));
@@ -109,9 +112,9 @@ const App = () => {
     <Suspense
       fallback={
         <div className="col text-center p-5">
-          __ React Redux EC
+          Optima
           <LoadingOutlined />
-          MMERCE __
+          Mart
         </div>
       }
     >
@@ -134,7 +137,9 @@ const App = () => {
           path="/admin/category/:slug"
           component={CategoryUpdate}
         />
+        <AdminRoute exact path="/admin/brands" component={brandCreate} />
         <AdminRoute exact path="/admin/sub" component={SubCreate} />
+        <AdminRoute exact path="/admin/secondSub" component={SecondSubCreate} />
         <AdminRoute exact path="/admin/sub/:slug" component={SubUpdate} />
         <AdminRoute exact path="/admin/product" component={ProductCreate} />
         <AdminRoute exact path="/admin/products" component={AllProducts} />

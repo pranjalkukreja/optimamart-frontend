@@ -5,39 +5,26 @@ import { useSelector } from "react-redux";
 import { createProduct } from "../../../functions/product";
 import ProductCreateForm from "../../../components/forms/ProductCreateForm";
 import { getCategories, getCategorySubs } from "../../../functions/category";
+import { getBrands } from "../../../functions/brand"
+import { getSubs, getSubsSecond } from "../../../functions/sub"
 import FileUpload from "../../../components/forms/FileUpload";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const initialState = {
-  title: "Macbook Pro",
   description: "This is the best Apple product",
   price: "45000",
   categories: [],
   category: "",
   subs: [],
+  sub: "",
+  secondSubs: [],
   shipping: "Yes",
   quantity: "50",
-  images: [
-    // {
-    //   public_id: "jwrzeubemmypod99e8lz",
-    //   url:
-    //     "https://res.cloudinary.com/dcqjrwaoi/image/upload/v1599480909/jwrzeubemmypod99e8lz.jpg",
-    // },
-    // {
-    //   public_id: "j7uerlvhog1eic0oyize",
-    //   url:
-    //     "https://res.cloudinary.com/dcqjrwaoi/image/upload/v1599480912/j7uerlvhog1eic0oyize.jpg",
-    // },
-    // {
-    //   public_id: "ho6wnp7sugyemnmtoogf",
-    //   url:
-    //     "https://res.cloudinary.com/dcqjrwaoi/image/upload/v1599480913/ho6wnp7sugyemnmtoogf.jpg",
-    // },
-  ],
+  images: [],
   colors: ["Black", "Brown", "Silver", "White", "Blue"],
-  brands: ["BIKANO", "RANI", "Patanjali", "Fortune", "Optima Mart"],
+  brands: [],
   color: "White",
-  brand: "Apple",
+  brand: "",
 };
 
 
@@ -47,16 +34,30 @@ const ProductCreate = () => {
   const [subOptions, setSubOptions] = useState([]);
   const [showSub, setShowSub] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [secondSubOptions, setSecondSubOptions] = useState([]);
+  const [showSecondSub, setShowSecondSub] = useState(false);
+
 
   // redux
   const { user } = useSelector((state) => ({ ...state }));
 
+
+  const loadItems = () => {
+  }
+
+
+
   useEffect(() => {
-    loadCategories();
+    loadCategories(); 
   }, []);
 
-  const loadCategories = () =>
-    getCategories().then((c) => setValues({ ...values, categories: c.data }));
+
+
+  const loadBrands = () =>  getBrands().then((b) => setValues({ ...values, brands: b.data }));
+
+  const loadCategories = () => getCategories().then((c) => setValues({ ...values, categories: c.data }));
+  
+  const loadSubCategories = () =>  getSubs().then((s) => setValues({ ...values, subs: s.data }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -86,8 +87,30 @@ const ProductCreate = () => {
       console.log("SUB OPTIONS ON CATGORY CLICK", res);
       setSubOptions(res.data);
     });
+
     setShowSub(true);
+    // setShowSecondSub(true);
   };
+
+  const handlebrandChange = (e) => {
+    e.preventDefault();
+    console.log("CLICKED BRAND", e.target.value);
+    setValues({ ...values, brand: e.target.value });
+  }
+
+
+  const handleSubCatagoryChange = (e) => {
+    e.preventDefault();
+    console.log("CLICKED SUB CATEGORY", e.target.value);
+    setValues({ ...values, secondSubs: [], [e.target.name]: e.target.value });
+    getSubsSecond(e.target.value).then((res) => {
+      console.log("2 SUB OPTIONS ON SUB CATGORY CLICK", res);
+      setSecondSubOptions(res.data);
+    });
+    setShowSecondSub(true);
+
+  }
+
 
   return (
     <div className="container-fluid">
@@ -122,6 +145,11 @@ const ProductCreate = () => {
             handleCatagoryChange={handleCatagoryChange}
             subOptions={subOptions}
             showSub={showSub}
+            handleSubCatagoryChange={handleSubCatagoryChange}
+            showSecondSub={showSecondSub}
+            secondSubOptions={secondSubOptions}
+            // handlebrandChange={handlebrandChange}
+
           />
         </div>
       </div>
