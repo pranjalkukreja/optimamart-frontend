@@ -45,8 +45,7 @@ const Cart = ({ history }) => {
           <th scope="col">Image</th>
           <th scope="col">Title</th>
           <th scope="col">Price</th>
-          <th scope="col">Brand</th>
-          <th scope="col">Color</th>
+
           <th scope="col">Count</th>
           <th scope="col">Shipping</th>
           <th scope="col">Remove</th>
@@ -80,12 +79,12 @@ const Cart = ({ history }) => {
           {cart.map((c, i) => (
             <div key={i}>
               <p>
-                {c.title} x {c.count} = ${c.price * c.count}
+                {c.title} x {c.count} = ₹{c.price * c.count}
               </p>
             </div>
           ))}
           <hr />
-          Total: <b>${getTotal()}</b>
+          Total: <b>₹{getTotal()}</b>
           <hr />
           {user ? (
             <>

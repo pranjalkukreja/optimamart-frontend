@@ -11,13 +11,21 @@ import { Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import CategoryForm from "../../../components/forms/CategoryForm";
 import LocalSearch from "../../../components/forms/LocalSearch";
+import FileUpload from "../../../components/forms/FileUpload";
+
 
 const CategoryCreate = () => {
+  const initialState = {
+    images: []
+  };
   const { user } = useSelector((state) => ({ ...state }));
 
   const [name, setName] = useState("");
+  // const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [values, setValues] = useState(initialState);
+
   // step 1
   const [keyword, setKeyword] = useState("");
 
@@ -32,11 +40,12 @@ const CategoryCreate = () => {
     e.preventDefault();
     // console.log(name);
     setLoading(true);
-    createCategory({ name }, user.token)
+    createCategory({ name }, values, user.token)
       .then((res) => {
         // console.log(res)
         setLoading(false);
         setName("");
+        setValues("");
         toast.success(`"${res.data.name}" is created`);
         loadCategories();
       })
@@ -67,8 +76,12 @@ const CategoryCreate = () => {
     }
   };
 
+
+
   // step 4
   const searched = (keyword) => (c) => c.name.toLowerCase().includes(keyword);
+
+
 
   return (
     <div className="container-fluid">
@@ -80,8 +93,16 @@ const CategoryCreate = () => {
           {loading ? (
             <h4 className="text-danger">Loading..</h4>
           ) : (
-            <h4>Create category</h4>
-          )}
+              <h4>Create category</h4>
+            )}
+
+          <div className="p-3">
+            <FileUpload
+              values={values}
+              setValues={setValues}
+              setLoading={setLoading}
+            />
+          </div>
 
           <CategoryForm
             handleSubmit={handleSubmit}
@@ -93,7 +114,11 @@ const CategoryCreate = () => {
           <LocalSearch keyword={keyword} setKeyword={setKeyword} />
 
           {/* step 5 */}
-          {categories.filter(searched(keyword)).map((c) => (
+          {categories.sort(function (a, b) {
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+            return 0;
+          }).map((c) => (
             <div className="alert alert-secondary" key={c._id}>
               {c.name}
               <span

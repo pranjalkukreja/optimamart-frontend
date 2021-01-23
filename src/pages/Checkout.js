@@ -49,7 +49,7 @@ const Checkout = ({ history }) => {
       setTotal(0);
       setTotalAfterDiscount(0);
       setCoupon("");
-      toast.success("Cart is emapty. Contniue shopping.");
+      toast.success("Cart is now empty. :(");
     });
   };
 

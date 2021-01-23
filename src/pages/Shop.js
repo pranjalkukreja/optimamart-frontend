@@ -3,11 +3,17 @@ import {
   getProductsByCount,
   fetchProductsByFilter,
 } from "../functions/product";
-import { getCategories } from "../functions/category";
-import { getSubs } from "../functions/sub";
+import { getCategories, getCategorySubs } from "../functions/category";
+import { getSubs, getSubsSecond } from "../functions/sub";
 import { useSelector, useDispatch } from "react-redux";
 import ProductCard from "../components/cards/ProductCard";
 import { Menu, Slider, Checkbox, Radio } from "antd";
+import SideSubCategories from '../pages/category/SideSubCategories'
+import TopCategories from '../pages/category/TopCategories'
+import BlackNavigation from '../components/BlackNavigation/BlackNavigation'
+
+
+
 import {
   DollarOutlined,
   DownSquareOutlined,
@@ -116,7 +122,7 @@ const Shop = () => {
           onChange={handleCheck}
           className="pb-2 pl-4 pr-4"
           value={c._id}
-          name="category"
+          name="Sub"
           checked={categoryIds.includes(c._id)}
         >
           {c.name}
@@ -312,116 +318,64 @@ const Shop = () => {
 
   return (
     <div className="container-fluid">
+      <BlackNavigation title="Browse Aisles" />
       <div className="row">
         <div className="col-md-3 pt-2">
-          <h4>Search/Filter</h4>
           <hr />
+        <Menu
+defaultOpenKeys={["1", "2", "3", "4", "5", "6", "7"]}
+mode="inline"
+>
+<SubMenu
+  key="2"
+  title={
+    <span className="h6">
+      <DownSquareOutlined /> Categories
+    </span>
+  }
+>
+  <div style={{ maringTop: "-10px" }}>{showCategories()}</div>
+</SubMenu>
 
-          <Menu
-            defaultOpenKeys={["1", "2", "3", "4", "5", "6", "7"]}
-            mode="inline"
-          >
-            {/* price */}
-            <SubMenu
-              key="1"
-              title={
-                <span className="h6">
-                  <DollarOutlined /> Price
-                </span>
-              }
-            >
-              <div>
-                <Slider
-                  className="ml-4 mr-4"
-                  tipFormatter={(v) => `$${v}`}
-                  range
-                  value={price}
-                  onChange={handleSlider}
-                  max="4999"
-                />
-              </div>
-            </SubMenu>
+<SubMenu
+  key="3"
+  title={
+    <span className="h6">
+      <StarOutlined /> Rating
+    </span>
+  }
+>
+  <div style={{ maringTop: "-10px" }}>{showStars()}</div>
+</SubMenu>
 
-            {/* category */}
-            <SubMenu
-              key="2"
-              title={
-                <span className="h6">
-                  <DownSquareOutlined /> Categories
-                </span>
-              }
-            >
-              <div style={{ maringTop: "-10px" }}>{showCategories()}</div>
-            </SubMenu>
+<SubMenu
+  key="4"
+  title={
+    <span className="h6">
+      <DownSquareOutlined /> Sub Categories
+    </span>
+  }
+>
+  <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
+    {showSubs()}
+  </div>
+</SubMenu>
 
-            {/* stars */}
-            <SubMenu
-              key="3"
-              title={
-                <span className="h6">
-                  <StarOutlined /> Rating
-                </span>
-              }
-            >
-              <div style={{ maringTop: "-10px" }}>{showStars()}</div>
-            </SubMenu>
 
-            {/* sub category */}
-            <SubMenu
-              key="4"
-              title={
-                <span className="h6">
-                  <DownSquareOutlined /> Sub Categories
-                </span>
-              }
-            >
-              <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
-                {showSubs()}
-              </div>
-            </SubMenu>
+<SubMenu
+  key="7"
+  title={
+    <span className="h6">
+      <DownSquareOutlined /> Shipping
+    </span>
+  }
+>
+  <div style={{ maringTop: "-10px" }} className="pr-5">
+    {showShipping()}
+  </div>
+</SubMenu>
+</Menu>
 
-            {/* brands */}
-            <SubMenu
-              key="5"
-              title={
-                <span className="h6">
-                  <DownSquareOutlined /> Brands
-                </span>
-              }
-            >
-              <div style={{ maringTop: "-10px" }} className="pr-5">
-                {showBrands()}
-              </div>
-            </SubMenu>
-
-            {/* colors */}
-            <SubMenu
-              key="6"
-              title={
-                <span className="h6">
-                  <DownSquareOutlined /> Colors
-                </span>
-              }
-            >
-              <div style={{ maringTop: "-10px" }} className="pr-5">
-                {showColors()}
-              </div>
-            </SubMenu>
-
-            {/* shipping */}
-            <SubMenu
-              key="7"
-              title={
-                <span className="h6">
-                  <DownSquareOutlined /> Shipping
-                </span>
-              }
-            >
-              <div style={{ maringTop: "-10px" }} className="pr-5">
-                {showShipping()}
-              </div>
-            </SubMenu>
-          </Menu>
         </div>
 
         <div className="col-md-9 pt-2">
@@ -447,3 +401,4 @@ const Shop = () => {
 };
 
 export default Shop;
+
