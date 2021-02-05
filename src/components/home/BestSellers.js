@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { getProducts, getProductsCount } from "../../functions/product";
+import { getProducts, getProductsCount, getRelated } from "../../functions/product";
 import ProductCard from "../cards/ProductCard";
 import LoadingCard from "../cards/LoadingCard";
 import { Pagination } from "antd";
+
 
 const BestSellers = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [productsCount, setProductsCount] = useState(0);
   const [page, setPage] = useState(1);
+  const [related, setRelated] = useState([]);
+
 
   useEffect(() => {
     loadAllProducts();
@@ -35,7 +38,7 @@ const BestSellers = () => {
         ) : (
           <div className="row">
             {products.map((product) => (
-              <div key={product._id} className="col-md-4">
+              <div key={product._id} className="col-md-3">
                 <ProductCard product={product} />
               </div>
             ))}

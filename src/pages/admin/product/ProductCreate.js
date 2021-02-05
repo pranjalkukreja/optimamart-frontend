@@ -27,8 +27,6 @@ const initialState = {
   brand: "",
 };
 
-
-
 const ProductCreate = () => {
   const [values, setValues] = useState(initialState);
   const [subOptions, setSubOptions] = useState([]);
@@ -73,6 +71,8 @@ const ProductCreate = () => {
         toast.error(err.response.data.err);
       });
   };
+  
+  
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });

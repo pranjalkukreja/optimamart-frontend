@@ -76,7 +76,6 @@ const Header = () => {
    const MyShopMenu = (
      <>
      <MyShop />
-     {/* <span className="mask-global-header mask--search-input" /> */}
 
      </>
        

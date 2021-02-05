@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import SideSubCategories from '../category/SideSubCategories'
 import { getCategories } from "../../functions/category";
+import laptop from "../../images/laptop.png";
+
 
 
 
@@ -32,7 +34,9 @@ const TopCategories = () => {
             }).map((c) =>
 
               <li className key={c._id}><a aria-label="Fresh Start" href={"/shop/" + c.slug} role="link" className="browse-aisles-category-pills_white-wrapper">
-                <div className="browse-aisles-category-pills_content"> <span className="browse-aisles-category-pills_name">
+                <div className="browse-aisles-category-pills_content"> 
+                <img alt="New Arrivals" aria-hidden="true" role="presentation" src={c.images && c.images.length ? c.images[0].url : laptop} class="browse-aisles-category-pills_icon"></img>
+                <span className="browse-aisles-category-pills_name">
                   {c.name}
                 </span></div>
               </a>

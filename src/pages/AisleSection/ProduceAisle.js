@@ -10,10 +10,12 @@ import ProductCard from "../../components/cards/ProductCard";
 import {
     fetchProductsByFilter,
 } from "../../functions/product";
+import laptop from "../../images/laptop.png";
+import ProductAisleCard from "../../components/cards/ProductAisleCard"
 
 
 
-const ProduceAisle = ({match}) => {
+const ProduceAisle = ({ match }) => {
 
     const { SubMenu, ItemGroup } = Menu;
     const [loading, setLoading] = useState(false);
@@ -69,7 +71,7 @@ const ProduceAisle = ({match}) => {
         ));
 
     return (
-        <div className="">
+        <div className="container-fluid">
             <BlackNavigation title={category.name} />
             <TopCategories />
             <div className="row">
@@ -86,10 +88,23 @@ const ProduceAisle = ({match}) => {
                         mode="inline">
 
                         <SubMenu
-                            key="4"
+                            key="1"
                             title={
                                 <span className="h6">
                                     <DownSquareOutlined /> Sub Categories
+    </span>
+                            }
+                        >
+                            <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
+                                {showSubs()}
+                            </div>
+                        </SubMenu>
+
+                        <SubMenu
+                            key="2"
+                            title={
+                                <span className="h6">
+                                    <DownSquareOutlined /> Brands
     </span>
                             }
                         >
@@ -107,13 +122,17 @@ const ProduceAisle = ({match}) => {
                             <h4 className="text-danger">Products</h4>
                         )}
 
+                    {products.length < 1 && <p>No products found</p>}
+
                     <div className="row pb-5">
                         {products.map((p) => (
-                            <div className="col" key={p._id}>
+                            <div key={p._id} className="col-md-3 mt-4">
                                 <ProductCard product={p} />
                             </div>
                         ))}
                     </div>
+
+
                 </div>
             </div>
         </div>

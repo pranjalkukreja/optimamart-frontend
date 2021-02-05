@@ -20,17 +20,24 @@ const CategoryCreate = () => {
   };
   const { user } = useSelector((state) => ({ ...state }));
 
-  const [name, setName] = useState("");
-  // const [image, setImage] = useState("");
+  // const [name, setName] = useState("");
+  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState([]);
   const [values, setValues] = useState(initialState);
+
+  const {
+  name,
+  images
+  } = values;
 
   // step 1
   const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
     loadCategories();
+
+
   }, []);
 
   const loadCategories = () =>
@@ -38,20 +45,23 @@ const CategoryCreate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // console.log(name);
     setLoading(true);
-    createCategory({ name }, values, user.token)
+    createCategory(values, user.token)
       .then((res) => {
-        // console.log(res)
         setLoading(false);
-        setName("");
         setValues("");
         toast.success(`"${res.data.name}" is created`);
+        console.log("balle", values);
+        
         loadCategories();
       })
       .catch((err) => {
         console.log(err);
         setLoading(false);
+        console.log("balli", values);
+
         if (err.response.status === 400) toast.error(err.response.data);
       });
   };
@@ -70,6 +80,7 @@ const CategoryCreate = () => {
         .catch((err) => {
           if (err.response.status === 400) {
             setLoading(false);
+
             toast.error(err.response.data);
           }
         });
@@ -102,13 +113,25 @@ const CategoryCreate = () => {
               setValues={setValues}
               setLoading={setLoading}
             />
-          </div>
+            {/* console.log("rehman", {values}) */}
 
-          <CategoryForm
-            handleSubmit={handleSubmit}
-            name={name}
-            setName={setName}
-          />
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                className="form-control"
+                onChange={(e) => setValues({ ...values, "name": e.target.value })}
+                value={name}
+                autoFocus
+                required
+              />
+              <br />
+
+              <button className="btn btn-outline-primary">Save</button>
+            </div>
+          </form>
 
           {/* step 2 and step 3 */}
           <LocalSearch keyword={keyword} setKeyword={setKeyword} />

@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-const CategoryForm = ({ handleSubmit, name, setName }) => (
+const CategoryForm = ({ handleSubmit, name, setName  }) => {
+
+
+     return (
   <form onSubmit={handleSubmit}>
     <div className="form-group">
       <label>Name</label>
@@ -13,9 +16,11 @@ const CategoryForm = ({ handleSubmit, name, setName }) => (
         required
       />
       <br />
+
       <button className="btn btn-outline-primary">Save</button>
     </div>
   </form>
-);
+     )
+     }
 
 export default CategoryForm

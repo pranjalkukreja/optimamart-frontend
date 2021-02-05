@@ -41,6 +41,8 @@ const FileUpload = ({ values, setValues, setLoading }) => {
                 allUploadedFiles.push(res.data);
 
                 setValues({ ...values, images: allUploadedFiles });
+                console.log("clocked", values.images[0].url);
+                
               })
               .catch((err) => {
                 setLoading(false);

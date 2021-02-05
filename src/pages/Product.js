@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { getRelated } from "../functions/product";
 import ProductCard from "../components/cards/ProductCard";
 
+
 const Product = ({ match }) => {
   const [product, setProduct] = useState({});
   const [related, setRelated] = useState([]);

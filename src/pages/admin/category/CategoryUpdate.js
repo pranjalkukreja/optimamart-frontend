@@ -4,12 +4,25 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { getCategory, updateCategory } from "../../../functions/category";
 import CategoryForm from "../../../components/forms/CategoryForm";
+import FileUpload from "../../../components/forms/FileUpload";
+
 
 const CategoryUpdate = ({ history, match }) => {
+
+  const initialState = {
+    images: []
+  };
+
   const { user } = useSelector((state) => ({ ...state }));
 
-  const [name, setName] = useState("");
+  const [names, setName] = useState("");
   const [loading, setLoading] = useState(false);
+  const [values, setValues] = useState(initialState);
+
+  const {
+    name,
+    images
+  } = values;
 
   useEffect(() => {
     loadCategory();
@@ -22,11 +35,11 @@ const CategoryUpdate = ({ history, match }) => {
     e.preventDefault();
     // console.log(name);
     setLoading(true);
-    updateCategory(match.params.slug, { name }, user.token)
+    updateCategory(match.params.slug, values, user.token)
       .then((res) => {
         // console.log(res)
         setLoading(false);
-        setName("");
+        setValues("");
         toast.success(`"${res.data.name}" is updated`);
         history.push("/admin/category");
       })
@@ -47,14 +60,35 @@ const CategoryUpdate = ({ history, match }) => {
           {loading ? (
             <h4 className="text-danger">Loading..</h4>
           ) : (
-            <h4>Update category</h4>
-          )}
+              <h4>Update category</h4>
+            )}
 
-          <CategoryForm
-            handleSubmit={handleSubmit}
-            name={name}
-            setName={setName}
-          />
+          <div className="p-3">
+            <FileUpload
+              values={values}
+              setValues={setValues}
+              setLoading={setLoading}
+            />
+            {/* console.log("rehman", {values}) */}
+
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                className="form-control"
+                onChange={(e) => setValues({ ...values, "name": e.target.value })}
+                value={name}
+                autoFocus
+                required
+              />
+              <br />
+
+              <button className="btn btn-outline-primary">Save</button>
+            </div>
+          </form>
 
           <hr />
         </div>

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getCategories } from "../../functions/category";
+import laptop from "../../images/laptop.png";
+
 
 
 const CategoryView = () => {
@@ -28,7 +30,7 @@ const CategoryView = () => {
             return 0;
           }).map((c) =>
             <li key={c._id} className="nav-item nav-item--with-image"><a id="nav-Fresh-Start" href={"/shop/" + c.slug} className="nav-item_link">
-            <div className="nav-item_image-container"><img alt="" aria-hidden="true" role="presentation" src="https://i5.peapod.com/c/AO/AO5ZU.png" className="nav-item_image" /></div>
+            <div className="nav-item_image-container"><img alt="" aria-hidden="true" role="presentation" src={c.images && c.images.length ? c.images[0].url : laptop} className="nav-item_image" /></div>
              {c.name}
           </a></li>
             )}

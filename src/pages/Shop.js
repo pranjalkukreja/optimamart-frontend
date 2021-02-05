@@ -322,59 +322,59 @@ const Shop = () => {
       <div className="row">
         <div className="col-md-3 pt-2">
           <hr />
-        <Menu
-defaultOpenKeys={["1", "2", "3", "4", "5", "6", "7"]}
-mode="inline"
->
-<SubMenu
-  key="2"
-  title={
-    <span className="h6">
-      <DownSquareOutlined /> Categories
+          <Menu
+            defaultOpenKeys={["1", "2", "3", "4", "5", "6", "7"]}
+            mode="inline"
+          >
+            <SubMenu
+              key="2"
+              title={
+                <span className="h6">
+                  <DownSquareOutlined /> Categories
     </span>
-  }
->
-  <div style={{ maringTop: "-10px" }}>{showCategories()}</div>
-</SubMenu>
+              }
+            >
+              <div style={{ maringTop: "-10px" }}>{showCategories()}</div>
+            </SubMenu>
 
-<SubMenu
-  key="3"
-  title={
-    <span className="h6">
-      <StarOutlined /> Rating
+            <SubMenu
+              key="3"
+              title={
+                <span className="h6">
+                  <StarOutlined /> Rating
     </span>
-  }
->
-  <div style={{ maringTop: "-10px" }}>{showStars()}</div>
-</SubMenu>
+              }
+            >
+              <div style={{ maringTop: "-10px" }}>{showStars()}</div>
+            </SubMenu>
 
-<SubMenu
-  key="4"
-  title={
-    <span className="h6">
-      <DownSquareOutlined /> Sub Categories
+            <SubMenu
+              key="4"
+              title={
+                <span className="h6">
+                  <DownSquareOutlined /> Sub Categories
     </span>
-  }
->
-  <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
-    {showSubs()}
-  </div>
-</SubMenu>
+              }
+            >
+              <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
+                {showSubs()}
+              </div>
+            </SubMenu>
 
 
-<SubMenu
-  key="7"
-  title={
-    <span className="h6">
-      <DownSquareOutlined /> Shipping
+            <SubMenu
+              key="7"
+              title={
+                <span className="h6">
+                  <DownSquareOutlined /> Shipping
     </span>
-  }
->
-  <div style={{ maringTop: "-10px" }} className="pr-5">
-    {showShipping()}
-  </div>
-</SubMenu>
-</Menu>
+              }
+            >
+              <div style={{ maringTop: "-10px" }} className="pr-5">
+                {showShipping()}
+              </div>
+            </SubMenu>
+          </Menu>
 
         </div>
 
@@ -382,14 +382,14 @@ mode="inline"
           {loading ? (
             <h4 className="text-danger">Loading...</h4>
           ) : (
-            <h4 className="text-danger">Products</h4>
-          )}
+              <h4 className="text-danger">Products</h4>
+            )}
 
           {products.length < 1 && <p>No products found</p>}
 
           <div className="row pb-5">
             {products.map((p) => (
-              <div key={p._id} className="col-md-4 mt-3">
+              <div key={p._id} className="col-md-3 mt-3">
                 <ProductCard product={p} />
               </div>
             ))}

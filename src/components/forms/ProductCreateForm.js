@@ -117,6 +117,7 @@ const ProductCreateForm = ({
           <option value="Yes">Yes</option>
         </select>
       </div>
+      
 
       <div className="form-group">
         <label>Quantity</label>
