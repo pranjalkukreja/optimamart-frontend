@@ -7,45 +7,13 @@ const Footer = () => {
         <div className="site-footer_max-width-container">
           <div className="spyglass-nav-group_wrapper site-footer_link-section">
             {/**/}
-            <div id="site-footer_robot-col-id-1" className="site-footer_col site-footer_col_1">
-              <div>
-                <div className="site-footer_parent-link-wrapper"><a href aria-label="footer store locator" className="site-footer_link--bolded"> Store Locator </a></div>
-              </div>
-              <div>
-                <div className="site-footer_parent-link-wrapper"><a href aria-label="footer go pass" className="site-footer_link--bolded"> GO Pass </a></div>
-              </div>
-              <div>
-                <div className="site-footer_parent-link-wrapper"><a target="_blank" href="" aria-label="footer recipes" className="site-footer_link--bolded"> Recipes </a></div>
-              </div>
-              <div>
-                <div className="site-footer_parent-link-wrapper"><a href aria-label="footer pharmacy" className="site-footer_link--bolded"> Pharmacy </a></div>
-              </div>
-              <div>
-                <div className="site-footer_parent-link-wrapper"><a href aria-label="footer catering" className="site-footer_link--bolded"> Catering </a></div>
-              </div>
-              <div>
-                <div className="site-footer_parent-link-wrapper"><a href aria-label="footer floral" className="site-footer_link--bolded"> Floral </a></div>
-              </div>
-              <div>
-                <div className="site-footer_parent-link-wrapper"><a href aria-label="footer gift cards" className="site-footer_link--bolded"> Gift Cards </a></div>
-              </div>
-              <div>
-                <div className="site-footer_parent-link-wrapper"><a href aria-label="footer wellness" className="site-footer_link--bolded"> Wellness </a></div>
-              </div>
-              <div>
-                <div className="site-footer_parent-link-wrapper"><a href aria-label="footer savory magazine" className="site-footer_link--bolded"> Savory Magazine </a></div>
-              </div>
-              <div>
-                <div className="site-footer_parent-link-wrapper"><a href aria-label="footer delivery / pickup times" className="site-footer_link--bolded"> Delivery / Pickup Times </a></div>
-              </div>
-            </div>
             <div id="site-footer_robot-col-id-2" className="site-footer_col site-footer_col_2">
               <div>
                 <div className="accordion-list">
                   <div className="accordion-list_parent-bar"><a className="accordion-list_parent">About</a></div>
                   <div>
                     <ul className="accordion-list_child-link-list--is-expanded">
-                      <li className="accordion-list_child"><a href aria-label="footer about us" className="accordion-list_child-link"> About Us </a></li>
+                      <li className="accordion-list_child"><a href="/about-us" className="accordion-list_child-link"> About Us </a></li>
                       <li className="accordion-list_child"><a href aria-label="footer private brands" className="accordion-list_child-link"> Private Brands </a></li>
                       <li className="accordion-list_child"><a href aria-label="footer store departments" className="accordion-list_child-link"> Store Departments </a></li>
                       <li className="accordion-list_child"><a href aria-label="footer news & media" className="accordion-list_child-link"> News &amp; Media </a></li>

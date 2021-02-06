@@ -81,6 +81,7 @@ const Footer = lazy(() => import("./components/Footer/footer"));
 const Listing = lazy(() => import("./pages/ListingPage/Listing"))
 const ProduceAisle = lazy(() => import("./pages/AisleSection/ProduceAisle"))
 const NewCustomer = lazy(() => import("./pages/ExtraPages/NewCustomer"))
+const AboutUs = lazy(() => import("./pages/ExtraPages/AboutUs"))
 
 const App = () => {
   const dispatch = useDispatch();
@@ -165,6 +166,8 @@ const App = () => {
         <UserRoute exact path="/payment" component={Payment} />
         <Route exact path="/shop/:slug" component={ProduceAisle} />
         <Route exact path="/new-customer" component={NewCustomer} />
+        <Route exact path="/about-us" component={AboutUs} />
+
         
       </Switch>
       <Footer />
