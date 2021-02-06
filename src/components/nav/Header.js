@@ -206,21 +206,17 @@ const Header = () => {
         <li className="nav-item"><a id="nav-weekly-ad" href="#" className="nav-item_link"> Weekly Ad </a>
           {/**/}
         </li>
-        <li className="nav-item"><a id="nav-recipes" href="https://recipecenter.stopandshop.com/savory/recipes" target="_blank" className="nav-item_link"> Recipes </a>
+        <li className="nav-item"><a id="nav-recipes" href="/shop" target="_blank" className="nav-item_link"> Shop Now </a>
           {/**/}
         </li>
-        <li className="nav-item"><a id="nav-go-rewards" href="#" className="nav-item_link"> GO Rewards </a>
-          {/**/}
+        {/* <li className="nav-item"><a id="nav-go-rewards" href="#" className="nav-item_link"> GO Rewards </a>
         </li>
         <li className="nav-item"><a id="nav-past-purchases" href="#" className="nav-item_link"> Past Purchases </a>
-          {/**/}
         </li>
         <li className="nav-item"><a id="nav-pharmacy" href="#" className="nav-item_link"> Pharmacy </a>
-          {/**/}
         </li>
         <li className="nav-item"><a id="nav-wellness" href="#" className="nav-item_link"> Wellness </a>
-          {/**/}
-        </li>
+        </li> */}
       </ul>
       <div className="subnav-shopping-mode"><a href="#" className="subnav-shopping-mode_element robot-shopping-mode-type"><strong className="highlighted-text">In-Store</strong></a><span className="subnav-shopping-mode_element">at</span><a href="#" className="subnav-shopping-mode_element robot-shopping-mode-location"><strong className="highlighted-text">12/26 Rajouri Garden</strong></a><span className="subnav-shopping-mode_element">|</span>
         {/**/}<a href="#" className="subnav-shopping-mode_element robot-shopping-mode-slot"><strong className="highlighted-text">Try Pickup/Delivery</strong></a></div>

@@ -1,6 +1,11 @@
-import react from 'react'
+import React, { useState } from "react";
+import Modal from 'react-modal';
+
 
 const Footer = () => {
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
 
     return (
         <footer className="site-footer">
@@ -14,14 +19,14 @@ const Footer = () => {
                   <div>
                     <ul className="accordion-list_child-link-list--is-expanded">
                       <li className="accordion-list_child"><a href="/about-us" className="accordion-list_child-link"> About Us </a></li>
-                      <li className="accordion-list_child"><a href aria-label="footer private brands" className="accordion-list_child-link"> Private Brands </a></li>
-                      <li className="accordion-list_child"><a href aria-label="footer store departments" className="accordion-list_child-link"> Store Departments </a></li>
-                      <li className="accordion-list_child"><a href aria-label="footer news & media" className="accordion-list_child-link"> News &amp; Media </a></li>
-                      <li className="accordion-list_child"><a href aria-label="footer community" className="accordion-list_child-link"> Community </a></li>
-                      <li className="accordion-list_child"><a href aria-label="footer a+ school rewards" className="accordion-list_child-link"> A+ School Rewards </a></li>
-                      <li className="accordion-list_child"><a href aria-label="footer guiding stars" className="accordion-list_child-link"> Guiding Stars </a></li>
-                      <li className="accordion-list_child"><a href aria-label="footer security" className="accordion-list_child-link"> Security </a></li>
-                      <li className="accordion-list_child"><a target="_blank" href="https://stopandshop.com/groceries/index.html" aria-label="footer products" className="accordion-list_child-link"> Products </a></li>
+                      {/* <li className="accordion-list_child"><a href aria-label="footer private brands" className="accordion-list_child-link"> Private Brands </a></li> */}
+                      {/* <li className="accordion-list_child"><a href aria-label="footer store departments" className="accordion-list_child-link"> Store Departments </a></li> */}
+                      {/* <li className="accordion-list_child"><a href aria-label="footer news & media" className="accordion-list_child-link"> News &amp; Media </a></li> */}
+                      {/* <li className="accordion-list_child"><a href aria-label="footer community" className="accordion-list_child-link"> Community </a></li> */}
+                      {/* <li className="accordion-list_child"><a href aria-label="footer a+ school rewards" className="accordion-list_child-link"> A+ School Rewards </a></li> */}
+                      {/* <li className="accordion-list_child"><a href aria-label="footer guiding stars" className="accordion-list_child-link"> Guiding Stars </a></li> */}
+                      {/* <li className="accordion-list_child"><a href aria-label="footer security" className="accordion-list_child-link"> Security </a></li> */}
+                      <li className="accordion-list_child"><a target="_blank" href="/shop" aria-label="footer products" className="accordion-list_child-link"> Products </a></li>
                     </ul>
                   </div>
                 </div>
@@ -33,20 +38,20 @@ const Footer = () => {
                   <div className="accordion-list_parent-bar"><a className="accordion-list_parent">Customer Support</a></div>
                   <div>
                     <ul className="accordion-list_child-link-list--is-expanded">
-                      <li className="accordion-list_child"><a href aria-label="footer contact us" className="accordion-list_child-link"> Contact Us </a></li>
-                      <li className="accordion-list_child"><a href aria-label="footer help" className="accordion-list_child-link"> Help </a></li>
+                      <li className="accordion-list_child"><a onClick={() => setIsModalVisible(true)} aria-label="footer contact us" className="accordion-list_child-link"> Contact Us </a></li>
+                      {/* <li className="accordion-list_child"><a href aria-label="footer help" className="accordion-list_child-link"> Help </a></li>
                       <li className="accordion-list_child"><a href aria-label="footer coupon policy" className="accordion-list_child-link"> Coupon Policy </a></li>
                       <li className="accordion-list_child"><a href aria-label="footer food safety" className="accordion-list_child-link"> Food Safety </a></li>
                       <li className="accordion-list_child"><a href aria-label="footer product recalls" className="accordion-list_child-link"> Product Recalls </a></li>
                       <li className="accordion-list_child"><a target="_blank" href="https://refer.stopandshop.com/consumer_global_footer" aria-label="footer refer-a-friend" className="accordion-list_child-link"> Refer-a-friend </a></li>
                       <li className="accordion-list_child"><a href aria-label="footer covid-19" className="accordion-list_child-link"> COVID-19 </a></li>
-                      <li className="accordion-list_child"><a href aria-label="footer business delivery" className="accordion-list_child-link"> Business Delivery </a></li>
+                      <li className="accordion-list_child"><a href aria-label="footer business delivery" className="accordion-list_child-link"> Business Delivery </a></li> */}
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
-            <div id="site-footer_robot-col-id-4" className="site-footer_col site-footer_col_4">
+            {/* <div id="site-footer_robot-col-id-4" className="site-footer_col site-footer_col_4">
               <div>
                 <div className="accordion-list">
                   <div className="accordion-list_parent-bar"><a className="accordion-list_parent">Company</a></div>
@@ -59,7 +64,7 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="social-media-callouts spyglass-nav-group_wrapper">
             {/**/} <a target="_blank" href="https://www.pinterest.com/" aria-label="Our Pinterest">
@@ -151,7 +156,77 @@ const Footer = () => {
             <div className="site-legal-block_copyright"><span>©2021 Optima Mart LLC All Rights Reserved</span></div>
           </div>
         </div>
+        <Modal
+        isOpen={isModalVisible}
+        onRequestClose={() => setIsModalVisible(false)}
+        style={{
+          overlay: {
+            position: 'fixed',
+            padding: 0,
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(255, 255, 255, 0.75)'
+          },
+          content: {
+            position: 'absolute',
+            top: '30%',
+            left: '30%',
+            right: '30%',
+            bottom: '30%',
+            border: '1px solid #ccc',
+            background: '#fff',
+            overflow: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            borderRadius: '4px',
+            outline: 'none',
+            // padding: '20px'
+          }
+        }}
+      >
+        <div className="help-view_info-container">{/**/} {/**/} <div className="help-article_container">{/**/} {/**/} <p className="help-article_copy select-text"><span id="clickId" /></p><h3>CUSTOMER CARE</h3>
+    <p><a className="text-link" href="tel:+919811777782">+91-98117-77782</a></p>
+    <p>For questions about Online Pickup&nbsp;or home delivery:</p><table>
+      <caption>Hours</caption>
+      <thead>
+        <tr><th>Days</th><th>Hours</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sun - Sat</td>
+          <td>7a-10p IST</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>For all other Customer Care questions:</p><p>
+    </p><table>
+      <thead>
+        <tr><th>Days</th><th>Hours</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mon - Fri</td>
+          <td>8a-11p IST</td>
+        </tr>
+        <tr>
+          <td>Sat</td>
+          <td>8a-11p IST</td>
+        </tr>
+        <tr>
+          <td>Sun</td>
+          <td>8a-11p IST</td>
+        </tr>
+      </tbody>
+    </table>
+ </div> {/**/} {/**/} {/**/} {/**/}</div>
+
+      </Modal>
+
       </footer>
+
+
+
     )
 
 }
