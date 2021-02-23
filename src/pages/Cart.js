@@ -88,14 +88,26 @@ const Cart = ({ history }) => {
           <hr />
           {user ? (
             <>
+            {getTotal() > 600 ? (
+                           <button
+                           onClick={saveOrderToDb}
+                           className="btn btn-sm btn-primary mt-2"
+                           disabled={!cart.length}
+                         >
+                           Proceed to Online Payment
+                         </button>
+            ) : (
               <button
-                onClick={saveOrderToDb}
-                className="btn btn-sm btn-primary mt-2"
-                disabled={!cart.length}
-              >
-                Proceed to Checkout
-              </button>
+              onClick={saveOrderToDb}
+              className="btn btn-sm btn-primary mt-2"
+              disabled={cart.length}
+            >
+              Minimum Order Value 600
+            </button>
+            )}
+
               <br />
+              {getTotal() > 1000 ? (
               <button
                 onClick={saveCashOrderToDb}
                 className="btn btn-sm btn-warning mt-2"
@@ -103,6 +115,15 @@ const Cart = ({ history }) => {
               >
                 Pay Cash on Delivery
               </button>
+            ) : (
+              <button
+              onClick={saveCashOrderToDb}
+              className="btn btn-sm btn-primary mt-2"
+              disabled={cart.length}
+            >
+              COD Minimum ₹1,000
+            </button>
+            )}
             </>
           ) : (
             <button className="btn btn-sm btn-primary mt-2">

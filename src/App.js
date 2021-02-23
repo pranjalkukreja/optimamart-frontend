@@ -82,6 +82,8 @@ const Listing = lazy(() => import("./pages/ListingPage/Listing"))
 const ProduceAisle = lazy(() => import("./pages/AisleSection/ProduceAisle"))
 const NewCustomer = lazy(() => import("./pages/ExtraPages/NewCustomer"))
 const AboutUs = lazy(() => import("./pages/ExtraPages/AboutUs"))
+const Navbar = lazy(() => import("./components/nav/Navbar"));
+
 
 const App = () => {
   const dispatch = useDispatch();

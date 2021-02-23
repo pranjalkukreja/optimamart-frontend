@@ -25,10 +25,12 @@ const Home = () => {
     height: '300px',
     color: '#fff',
     margin: '0 auto',
-    width: '60%',
+    width: '100%',
     lineHeight: '160px',
     textAlign: 'center',
     background: '#364d79',
+    margin: '0 auto',
+    maxWidth: '124rem'
   };
 
   return (

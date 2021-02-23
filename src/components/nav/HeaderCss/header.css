@@ -9347,7 +9347,7 @@
   .global-header-mobile.global-header--active-search .global-header_search .typeahead-container_search-container {
     width: 100%;
     border: none;
-    position: fixed;
+    position: static;
     top: 6rem;
     left: 0;
     height: 100%
@@ -11999,6 +11999,116 @@
     flex-wrap: wrap;
     width: 100%
   }
+
+  :root {
+    --primary: #fff
+}
+
+.btn1 {
+    padding: 8px 20px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn--primary1 {
+    background-color: var(--primary);
+    color: #242424;
+    border: 1px solid var(--primary);
+}
+
+.btn--outline1 {
+    background-color: transparent;
+    color: #fff;
+    padding: 8px 20px;
+    border: 1px solid var(--primary);
+    transition: all 0.3s ease-out;
+}
+
+.btn-medium1 {
+    padding: 8px 20px;
+    font-size: 18px;
+}
+
+.btn--large1 {
+    padding: 12px 26px;
+    font-size: 20px;
+}
+
+btn--mobile1 {
+    text-align: center;
+    border-radius: 4px;
+    width: 80%;
+    text-decoration: none;
+    font-size: 24px;
+    background-color: transparent;
+    color: #fff;
+    padding: 14px 20px;
+    border: 1px solid #fff;
+    transition: all 0.3s ease-out;
+}
+
+.btn--wide1 {
+    padding: 12px 64px;
+    font-size: 20px;
+}
+
+.btn--large1:hover, .btn--medium1:hover, .btn--moile1:hover {
+    transition: all 0.3s ease-out;
+    background: #fff;
+    color: #242424;
+
+}
+
+.btn--wide1:hover {
+    color: #fff;
+    background-color: #f00946;
+    transition: all 0.2s ease-out;
+}
+
+.blue1 {
+    background-color: #276afb;
+    color: #fff;
+    border: none;
+}
+
+.red1 {
+    background-color: #f00946;
+    color: #fff;
+    border: none;
+}
+.primary1 {
+    background-color: #242424;
+    color: #fff;
+    border: none;
+}
+
+.primary1:hover {
+    background-color: #fff;
+    color: #242424;
+    border: none;
+}
+.green1 {
+    background-color: #25ce4a;
+    color: #fff;
+    border: none;
+}
+
+.green1:hover{
+    background-color: #242424;
+}
+
+.btn--link1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 8px 16px;
+    height: 100%;
+    width: 100%;
+}
   
   .pdl-generic-content_jump-points_wrapper {
     justify-content: normal;
@@ -21185,7 +21295,7 @@
   }
   
   .pdl-shopping-mode-tile_text_content--standalone {
-    max-width: 17rem;
+    max-width: 10rem;
     margin: auto;
     text-align: center;
     white-space: nowrap

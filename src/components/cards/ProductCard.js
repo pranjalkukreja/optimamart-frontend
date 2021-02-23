@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Tooltip, Button } from "antd";
 import Modal from 'react-modal';
 import { EyeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
@@ -7,16 +7,29 @@ import { Link } from "react-router-dom";
 import { showAverage } from "../../functions/rating";
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
-import { getProduct, productStar } from "../../functions/product";
+import { getProduct, productStar, getRelated } from "../../functions/product";
 
 
 const { Meta } = Card;
 
 const ProductCard = ({ product }) => {
 
+  // const loadSingleProduct = () => {
+  //   getProduct(slug).then((res) => {
+  //     setProduct(res.data);
+  //     // load related
+  //     getRelated(res.data._id).then((res) => setRelated(res.data));
+  //   });
+  // };
+
+  useEffect(() => {
+    getRelated(product._id).then((res) => setRelated(product));
+  }, []);
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const [products, setProducts] = useState([]);
+  const [related, setRelated] = useState([]);
 
 
   const [tooltip, setTooltip] = useState("Click to add");
@@ -70,6 +83,7 @@ const ProductCard = ({ product }) => {
         )} */}
 
       <div >
+
         <div className="pdl-carousel" >
           <div className="pdl-carousel_row">
             <div className="pdl-carousel_body">
@@ -88,8 +102,8 @@ const ProductCard = ({ product }) => {
                           </div>
                           {/**/}
                           <div className="product-grid-cell_price-tag product-grid-cell_price-tag--full-tile">
-
-                            <div onClick={() => setIsModalVisible(true)}>
+                          {/* onClick={() => setIsModalVisible(true)} */}
+                            <Link to={`/product/${slug}`} >
                               <div><img src={images && images.length ? images[0].url : laptop} alt="Apples Granny Smith" className="product-grid-image product-grid-cell_main-image" /></div>
 
                               <div className="product-tile_detail">
@@ -110,7 +124,7 @@ const ProductCard = ({ product }) => {
 
                               </div>
                               {/**/}
-                            </div>
+                            </Link>
 
 
 
@@ -121,10 +135,10 @@ const ProductCard = ({ product }) => {
                               <div data-v-2ac9e614 className="pdl-add-to-cart">
                                 <div data-v-2ac9e614 className="pdl-add-to-cart_button">
                                   <button onClick={handleAddToCart} className="button button--add-to-cart" >
-                                    
+
                                     {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
-                                    
-                                 </button>
+
+                                  </button>
                                   {/**/}
                                 </div>
                                 {/**/}
@@ -319,8 +333,8 @@ const ProductCard = ({ product }) => {
                               {/**/}
                               <div data-v-2ac9e614 className="pdl-add-to-cart">
                                 <div data-v-2ac9e614 className="pdl-add-to-cart_button">
-                                  <button onClick={handleAddToCart} className="button button--add-to-cart"> 
-                                  {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
+                                  <button onClick={handleAddToCart} className="button button--add-to-cart">
+                                    {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
                                   </button>
                                 </div>
                               </div>
@@ -337,7 +351,7 @@ const ProductCard = ({ product }) => {
                   <li id="tab-undefined" role="tab" tabIndex={0} className="tab tab--primary is-active">
                     Information
             </li>
-                
+
                 </ul>
                 <div className>
                   <div className="pdl-product-detail_details">
@@ -481,6 +495,9 @@ const ProductCard = ({ product }) => {
           </section>
           <section className="modal_content modal_content--scrollable modal_right-column modal_right-column_border">
             <div>
+
+            { console.log("attabey", related)}
+
               <div className="item-detail_suggested-products product-view-search">
                 <div className="pdl-generic-content_container">
                   <div className="pdl-generic-content_wrapper pdl-generic-content_container--max">
@@ -494,14 +511,18 @@ const ProductCard = ({ product }) => {
                           {/**/}
                           <div className="zone-block">
                             <div className="zone-block_header">
-                              <h2 className="zone-block_title"> Sponsored Suggestions </h2>
+                              <h2 className="zone-block_title"> Related Suggestions </h2>
                               {/**/}
                             </div>
                             {/**/}
                             {/**/}
                             {/**/}
                             <ul className="tile-list tile-list--undefined">
-                              <li id="product-0" tabIndex={-1} data-product-id={159266} aria-label="Hormel Black Label Bacon Original" className="tile product-cell product-grid-cell tile">
+                              {related.length ? (
+                                related.map((r) => (
+                                  <div key={r._id} className="col-md-4">
+
+<li className="tile product-cell product-grid-cell tile">
                                 {/**/}
                                 {/**/}
                                 {/**/}
@@ -518,31 +539,25 @@ const ProductCard = ({ product }) => {
                                   <div><img src="https://i5.peapod.com/c/YC/YCQPK.jpg" alt="Hormel Black Label Bacon Original" className="product-grid-image product-grid-cell_main-image" /></div>
                                   <div className="product-grid-cell_price-tag product-grid-cell_price-tag--full-tile">
                                     <div className="product-tile_detail">
-                                      <div className="product-grid-cell_price-container"><span role="link" className="product-grid-cell_main-price"> $6.99 </span>
+                                      <div className="product-grid-cell_price-container"><span role="link" className="product-grid-cell_main-price"> {r.price} </span>
                                         {/**/}
                                       </div>
                                     </div>
                                     <div className="product-tile_detail-title">
-                                      <div data-v-7b5b6b2c role="link" tabIndex={0} className="product-grid-cell_name">
-                                        <h3 data-v-7b5b6b2c aria-label="Hormel Black Label Bacon Original" className="product-grid-cell_name-text product-grid-cell_name-text--small">
-                                          {/**/} Hormel Black Label Bacon Original </h3>
+                                      <div  className="product-grid-cell_name">
+                                        <h3  className="product-grid-cell_name-text product-grid-cell_name-text--small">
+                                          {r.title} </h3>
                                       </div>
-                                      <div role="link" className="product-grid-cell_sizes"><span className="product-grid-cell_size"> 16 OZ PKG </span><span aria-hidden="true"> | </span>
-                                        {/**/}<span className="product-grid-cell_unit"> $6.99 / LB </span></div>
+
                                       {/**/}
                                     </div>
                                     <div className="product-grid-cell_promo-name">
-                                      {/**/}
-                                      {/**/}
-                                      {/**/}
-                                      {/**/}
-                                      {/**/}
+
                                     </div>
-                                    {/**/}
                                     <div className="margin-top--one">
                                       {/**/}
                                       <div data-v-2ac9e614 className="pdl-add-to-cart">
-                                        <div data-v-2ac9e614 className="pdl-add-to-cart_button"><button className="button button--add-to-cart"> Add to Kart
+                                        <div data-v-2ac9e614 className="pdl-add-to-cart_button"><button className="button button--add-to-cart"> Add to Cart
                                       {/**/}</button>
                                           {/**/}
                                         </div>
@@ -555,11 +570,8 @@ const ProductCard = ({ product }) => {
                                 {/**/}
                                 {/**/}
                                 <div className="product-tile_action-items">
-                                  {/**/}
-                                  {/**/}
                                   <div className="shopping-list-menu_container">
                                     <div className="relative-el"><button aria-label="add to shopping list" className="button pdl-product-detail_top-icon button--fourth pdl-product-detail_top-icon--borderless">
-                                      {/**/}
                                       <div className="vector-icon-size--large"><svg xmlns="http://www.w3.org/2000/svg" aria-label="Shopping List Icon Add" viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" className="vector-icon-color--dark-grey">
                                         <title lang="en">Shopping List Icon Add</title>
                                         <desc />
@@ -571,128 +583,28 @@ const ProductCard = ({ product }) => {
                                         <p>Add item to shopping list</p><em />
                                       </div>
                                     </button>
-                                      {/**/}
                                     </div>
                                   </div>
                                 </div>
-                                {/**/}
                               </li>
-                              <li id="product-1" tabIndex={-1} data-product-id={162689} aria-label="Hormel Black Label Bacon Maple" className="tile product-cell product-grid-cell tile">
-                                {/**/}
-                                {/**/}
-                                {/**/}
-                                <div className="product-tile_content">
-                                  <div>
-                                    {/**/}
-                                    <div className="flag_outer-container">
-                                      {/**/}
-                                      {/**/}
-                                      {/**/}
-                                    </div>
+
                                   </div>
-                                  {/**/}
-                                  <div><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0ZWQgYnkgSWNvTW9vbi5pbyAtLT4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KPGcgaWQ9Imljb21vb24taWdub3JlIj4KCTxsaW5lIHN0cm9rZS13aWR0aD0iMSIgeDE9IiIgeTE9IiIgeDI9IiIgeTI9IiIgc3Ryb2tlPSIjNDQ5RkRCIiBvcGFjaXR5PSIiPjwvbGluZT4KPC9nPgoJPHBhdGggZD0iTTM4LjQ4IDkuMDcwYzAuMjQ4IDAgMC40NSAwLjIwMiAwLjQ1IDAuNDV2MjguOTU5YzAgMC4yNDgtMC4yMDIgMC40NS0wLjQ1IDAuNDVoLTI4Ljk1OWMtMC4yNDggMC0wLjQ1LTAuMjAyLTAuNDUtMC40NXYtMjguOTU5YzAtMC4yNDggMC4yMDItMC40NSAwLjQ1LTAuNDVoMjguOTU5ek0zOC40OCA4aC0yOC45NTljLTAuODQgMC0xLjUyIDAuNjgxLTEuNTIgMS41MjF2MjguOTU5YzAgMC44NCAwLjY4MSAxLjUyMSAxLjUyIDEuNTIxaDI4Ljk1OWMwLjg0IDAgMS41Mi0wLjY4MSAxLjUyLTEuNTIxdi0yOC45NTljMC0wLjg0LTAuNjgxLTEuNTIxLTEuNTItMS41MjF2MHoiIG9wYWNpdHk9IjEiIHZpc2liaWxpdHk9ImZhbHNlIiBmaWxsPSIjZDdkN2Q3Ij48L3BhdGg+Cgk8cGF0aCBkPSJNMTIuMjI4IDM1LjIyNHYtMy4zMjljMC0wLjE0NSAwLjA1OC0wLjI4NSAwLjE2LTAuMzg4bDUuNTg3LTUuNTg3YzAuMjE0LTAuMjE0IDAuNTYxLTAuMjE0IDAuNzc1IDBsMi4xMTkgMi4xMTljMC4yMTQgMC4yMTQgMC41NjEgMC4yMTQgMC43NzUgMGw4LjE5MS04LjE5MmMwLjIxNC0wLjIxNCAwLjU2MS0wLjIxNCAwLjc3NSAwbDUgNWMwLjEwMyAwLjEwMyAwLjE2IDAuMjQyIDAuMTYgMC4zODh2OS45ODhjMCAwLjMwMy0wLjI0NSAwLjU0OC0wLjU0OCAwLjU0OGgtMjIuNDQ3Yy0wLjMwMyAwLTAuNTQ4LTAuMjQ1LTAuNTQ4LTAuNTQ4eiIgb3BhY2l0eT0iMSIgdmlzaWJpbGl0eT0iZmFsc2UiIGZpbGw9IiNkN2Q3ZDciPjwvcGF0aD4KCTxwYXRoIGQ9Ik0yMS41NDQgMTcuOTY3YzAgMS45ODItMS42MDYgMy41ODgtMy41ODggMy41ODhzLTMuNTg4LTEuNjA2LTMuNTg4LTMuNTg4YzAtMS45ODEgMS42MDYtMy41ODggMy41ODgtMy41ODhzMy41ODggMS42MDYgMy41ODggMy41ODh6IiBvcGFjaXR5PSIxIiB2aXNpYmlsaXR5PSJmYWxzZSIgZmlsbD0iI2Q3ZDdkNyI+PC9wYXRoPgo8L3N2Zz4K" alt="Hormel Black Label Bacon Maple" className="product-grid-image product-grid-cell_main-image" /></div>
-                                  <div className="product-grid-cell_price-tag product-grid-cell_price-tag--full-tile">
-                                    <div className="product-tile_detail">
-                                      <div className="product-grid-cell_price-container"><span role="link" className="product-grid-cell_main-price"> $6.99 </span>
-                                        {/**/}
-                                      </div>
-                                    </div>
-                                    <div className="product-tile_detail-title">
-                                      <div data-v-7b5b6b2c role="link" tabIndex={0} className="product-grid-cell_name">
-                                        <h3 data-v-7b5b6b2c aria-label="Hormel Black Label Bacon Maple" className="product-grid-cell_name-text product-grid-cell_name-text--small">
-                                          {/**/} Hormel Black Label Bacon Maple </h3>
-                                      </div>
-                                      <div role="link" className="product-grid-cell_sizes"><span className="product-grid-cell_size"> 12 OZ PKG </span><span aria-hidden="true"> | </span>
-                                        {/**/}<span className="product-grid-cell_unit"> $9.32 / LB </span></div>
-                                      {/**/}
-                                    </div>
-                                    <div className="product-grid-cell_promo-name">
-                                      {/**/}
-                                      {/**/}
-                                      {/**/}
-                                      {/**/}
-                                      {/**/}
-                                    </div>
-                                    {/**/}
-                                    <div className="margin-top--one">
-                                      {/**/}
-                                      <div data-v-2ac9e614 className="pdl-add-to-cart">
-                                        <div data-v-2ac9e614 className="pdl-add-to-cart_button"><button data-v-2ac9e614 aria-label="Add to Cart" data-product-id={162689} data-price="6.99" className="button button--add-to-cart"> Add to Kart
-                                      {/**/}</button>
-                                          {/**/}
-                                        </div>
-                                        {/**/}
-                                      </div>
-                                    </div>
-                                    {/**/}
-                                  </div>
-                                </div>
-                                {/**/}
-                                {/**/}
-                                <div className="product-tile_action-items">
-                                  {/**/}
-                                  {/**/}
-                                  <div className="shopping-list-menu_container">
-                                    <div className="relative-el"><button aria-label="add to shopping list" className="button pdl-product-detail_top-icon button--fourth pdl-product-detail_top-icon--borderless">
-                                      {/**/}
-                                      <div className="vector-icon-size--large"><svg xmlns="http://www.w3.org/2000/svg" aria-label="Shopping List Icon Add" viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" className="vector-icon-color--dark-grey">
-                                        <title lang="en">Shopping List Icon Add</title>
-                                        <desc />
-                                        <g fill stroke>
-                                          <path d="M21.94066,15.3368884 L21.94066,12.8931995 C21.94066,12.3409148 22.3883752,11.8931995 22.94066,11.8931995 C23.4929447,11.8931995 23.94066,12.3409148 23.94066,12.8931995 L23.94066,15.3368884 L26.2522624,15.3368884 C26.8045471,15.3368884 27.2522624,15.7846037 27.2522624,16.3368884 C27.2522624,16.8891732 26.8045471,17.3368884 26.2522624,17.3368884 L23.94066,17.3368884 L23.94066,19.8787952 C23.94066,20.43108 23.4929447,20.8787952 22.94066,20.8787952 C22.3883752,20.8787952 21.94066,20.43108 21.94066,19.8787952 L21.94066,17.3368884 L19.2666667,17.3368884 C18.7143819,17.3368884 18.2666667,16.8891732 18.2666667,16.3368884 C18.2666667,15.7846037 18.7143819,15.3368884 19.2666667,15.3368884 L21.94066,15.3368884 Z M8,12 C7.44771525,12 7,11.5522847 7,11 C7,10.4477153 7.44771525,10 8,10 L19.1153581,10 C19.6676429,10 20.1153581,10.4477153 20.1153581,11 C20.1153581,11.5522847 19.6676429,12 19.1153581,12 L8,12 Z M8,17.3368884 C7.44771525,17.3368884 7,16.8891732 7,16.3368884 C7,15.7846037 7.44771525,15.3368884 8,15.3368884 L14.7200696,15.3368884 C15.2723543,15.3368884 15.7200696,15.7846037 15.7200696,16.3368884 C15.7200696,16.8891732 15.2723543,17.3368884 14.7200696,17.3368884 L8,17.3368884 Z M8,23 C7.44771525,23 7,22.5522847 7,22 C7,21.4477153 7.44771525,21 8,21 L19.1153581,21 C19.6676429,21 20.1153581,21.4477153 20.1153581,22 C20.1153581,22.5522847 19.6676429,23 19.1153581,23 L8,23 Z" fill="#000000" fillRule="nonzero" />
-                                        </g>
-                                      </svg></div>
-                                      <div className="pdl-product-detail_list-tooltip">
-                                        <p>Add item to shopping list</p><em />
-                                      </div>
-                                    </button>
-                                      {/**/}
-                                    </div>
-                                  </div>
-                                </div>
-                                {/**/}
-                              </li>
+                                ))
+                              ) : (
+                                  <div className="text-center col">No Products Found</div>
+                                )}
+
+
+
                             </ul>
                           </div>
                           {/**/}
                         </div>
-                      </div>
-                    </div>
-                    <div className="pdl-generic-content_full pdl-generic-content-small">
-                      <div className="product-view product-view-search">
-                        <div className="product-set spyglass-nav-group_wrapper pdl-generic-content_container--max">
-                          <div>
-                            <ul className="tile-list tile-list--undefined">
-                              <div className="product-list_wrapper">
-                                <h2 className="product-list_header product-list_header--loading" />
-                              </div>
-                              <li className="tile product-loading-grid-cell product-grid-cell">
-                                <div className="product-main_image" />
-                                <div className="product-details_name"><span className="product-details_name_text" /><span className="product-details_name_text product-details_name_text--second-line" /></div>
-                              </li>
-                              <li className="tile product-loading-grid-cell product-grid-cell">
-                                <div className="product-main_image" />
-                                <div className="product-details_name"><span className="product-details_name_text" /><span className="product-details_name_text product-details_name_text--second-line" /></div>
-                              </li>
-                              <li className="tile product-loading-grid-cell product-grid-cell">
-                                <div className="product-main_image" />
-                                <div className="product-details_name"><span className="product-details_name_text" /><span className="product-details_name_text product-details_name_text--second-line" /></div>
-                              </li>
-                              <li className="tile product-loading-grid-cell product-grid-cell">
-                                <div className="product-main_image" />
-                                <div className="product-details_name"><span className="product-details_name_text" /><span className="product-details_name_text product-details_name_text--second-line" /></div>
-                              </li>
-                              <li className="tile product-loading-grid-cell product-grid-cell">
-                                <div className="product-main_image" />
-                                <div className="product-details_name"><span className="product-details_name_text" /><span className="product-details_name_text product-details_name_text--second-line" /></div>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
 
+
+                      </div>
                     </div>
+
                   </div>
                 </div>
               </div>

@@ -17,6 +17,7 @@ import { useHistory } from "react-router-dom";
 
 const { TabPane } = Tabs;
 
+
 // this is childrend component of Product page
 const SingleProduct = ({ product, onStarClick, star }) => {
   const [tooltip, setTooltip] = useState("Click to add");
@@ -88,7 +89,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
             {description && description}
           </TabPane>
           <TabPane tab="More" key="2">
-            Call use on xxxx xxx xxx to learn more about this product.
+            Call use on +919811161182 to learn more about this product.
           </TabPane>
         </Tabs>
       </div>

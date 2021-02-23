@@ -17,6 +17,7 @@ const Product = ({ match }) => {
 
   useEffect(() => {
     loadSingleProduct();
+
   }, [slug]);
 
   useEffect(() => {
@@ -28,12 +29,14 @@ const Product = ({ match }) => {
     }
   });
 
+
   const loadSingleProduct = () => {
     getProduct(slug).then((res) => {
       setProduct(res.data);
       // load related
       getRelated(res.data._id).then((res) => setRelated(res.data));
     });
+
   };
 
   const onStarClick = (newRating, name) => {

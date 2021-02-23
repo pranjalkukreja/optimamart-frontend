@@ -1,15 +1,44 @@
 import React from 'react'
 import BlackNavigation from '../../components/BlackNavigation/BlackNavigation'
+import { useMediaQuery } from 'react-responsive'
+
 
 const AboutUs = () => {
+
+  const isDesktopOrLaptop = useMediaQuery({
+    query: '(min-device-width: 1224px)'
+  })
+  const isBigScreen = useMediaQuery({ query: '(min-device-width: 1824px)' })
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 850px)' })
+  const isTabletOrMobileDevice = useMediaQuery({
+    query: '(max-device-width: 600px)'
+  })
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
+  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' })
 
     return (
         <div>
          <BlackNavigation title="About Us" />
         
          <div className="pdl-generic-content_container">
+           <div>
+           <h1>Device Test!</h1>
+      {isDesktopOrLaptop && <>
+        <p>You are a desktop or laptop</p>
+
+        {isBigScreen && <p>You also have a huge screen</p>}
+        {isTabletOrMobile && <p>You are sized like a tablet or mobile phone though</p>}
+      </>}
+      {isTabletOrMobileDevice && <p>You are a tablet or mobile phone</p>}
+      <p>Your are in {isPortrait ? 'portrait' : 'landscape'} orientation</p>
+      {isRetina && <p>You are retina</p>}
+
+           </div>
   <div className="pdl-generic-content_wrapper pdl-generic-content_container--max">
-    <div className="pdl-generic-content_full">
+    {isTabletOrMobile ? (
+      <h1>mobile</h1>
+    ) : (
+      <div className="pdl-generic-content_full">
       <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
         <div className="kwm-tile kwm-colors--primary">
           <div className="kwm-tile_image-container" style={{backgroundImage: 'url("https://i5.peapod.com/c/J5/J5ARI.jpg")'}}>
@@ -24,6 +53,8 @@ const AboutUs = () => {
         </div>
       </div>
     </div>
+    )}
+
     <div className="pdl-generic-content_full">
       <div className="copy-block spyglass-nav-group_wrapper pdl-generic-content_container--max">
         <div className="copy-block_content copy-block_text-only">

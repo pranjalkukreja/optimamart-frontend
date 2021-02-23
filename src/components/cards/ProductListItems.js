@@ -10,15 +10,24 @@ const ProductListItems = ({ product }) => {
     color,
     brand,
     quantity,
-    sold,
+    MRP
   } = product;
 
   return (
     <ul className="list-group">
+
+  <li className="list-group-item">
+        MRP{" "}
+        <span className="label label-default label-pill pull-xs-right">
+         ₹ {MRP}
+        </span>
+      </li>
+
+
       <li className="list-group-item">
         Price{" "}
         <span className="label label-default label-pill pull-xs-right">
-          $ {price}
+         ₹ {price}
         </span>
       </li>
 
@@ -77,12 +86,6 @@ const ProductListItems = ({ product }) => {
         </span>
       </li>
 
-      <li className="list-group-item">
-        Sold{" "}
-        <span className="label label-default label-pill pull-xs-right">
-          {sold}
-        </span>
-      </li>
     </ul>
   );
 };
