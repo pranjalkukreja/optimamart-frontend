@@ -72,12 +72,24 @@ const ProductListItems = ({ product }) => {
         </span>
       </li>
 
-      <li className="list-group-item">
+      {brand && (
+        <li className="list-group-item">
+          Brand{" "}
+          <Link
+            to={`/brand/${brand.slug}`}
+            className="label label-default label-pill pull-xs-right"
+          >
+            {brand.name}
+          </Link>
+        </li>
+      )}
+
+      {/* <li className="list-group-item">
         Brand{" "}
         <span className="label label-default label-pill pull-xs-right">
           {brand}
         </span>
-      </li>
+      </li> */}
 
       <li className="list-group-item">
         Available{" "}

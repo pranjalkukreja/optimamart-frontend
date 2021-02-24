@@ -2010,7 +2010,7 @@
   
   body.scroll-down .global-header-base_scroll-section {
     transform: translate3d(0, -100%, 0);
-    z-index: -999;
+   
     position: absolute;
     width: 100%
   }
@@ -2040,7 +2040,7 @@
     position: fixed;
     width: 100%;
     z-index: 99;
-    top: 0
+    top: 0;
   }
   
   .global-header-base_scroll-section {

@@ -158,7 +158,7 @@ const Header = () => {
 
 
   return (
-    <div>
+    <div className="">
       <header className="global-header global-header-mobile">
         <nav aria-label="Main" className="global-header_nav global-header_nav--main spyglass-nav-group_wrapper">
 

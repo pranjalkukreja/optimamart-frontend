@@ -73,7 +73,7 @@ const ProductCard = ({ product }) => {
   };
 
   // destructure
-  const { images, title, description, slug, price, MRP, brand } = product;
+  const { images, title, description, slug, price, MRP, brand, ShelfLife, category } = product;
   return (
     <>
       {/* {product && product.ratings && product.ratings.length > 0 ? (
@@ -82,87 +82,59 @@ const ProductCard = ({ product }) => {
           <div className="text-center pt-1 pb-3">No Ratings Yet</div>
         )} */}
 
-      <div >
+      <li className="tile product-cell product-grid-cell tile" content="[object Object]">
+        <div className="product-tile_content">
+          <div>
+            <div className="flag_outer-container"><span className="flag_label flag_label--tomato"> Sale </span></div>
+          </div>
+          <div className="product-grid-cell_price-tag product-grid-cell_price-tag--full-tile">
+            <Link to={`/product/${slug}`}>
+            <div><img src={images && images.length ? images[0].url : laptop} className="product-grid-image product-grid-cell_main-image" /></div>
 
-        <div className="pdl-carousel" >
-          <div className="pdl-carousel_row">
-            <div className="pdl-carousel_body">
-              <div className="" style={{ minHeight: 'auto' }}>
-                <div className="pdl-carousel_slider" style={{ transform: 'translateX(0px)', height: 'auto', position: 'relative' }}>
-                  <div className="pdl-carousel_item zone-block_carousel-item" style={{ height: 'auto', width: '100%' }}>
-                    <ul className="product-list-quint" >
-
-                      <li tabIndex={-1} className="tile product-cell product-grid-cell tile" >
-                        <div className="product-tile_content" >
-                          <div>
-                            <div className="flag_outer-container"><span className="flag_label flag_label--tomato"> Sale </span>
-                              {/**/}
-                              {/**/}
-                            </div>
-                          </div>
-                          {/**/}
-                          <div className="product-grid-cell_price-tag product-grid-cell_price-tag--full-tile">
-                          {/* onClick={() => setIsModalVisible(true)} */}
-                            <Link to={`/product/${slug}`} >
-                              <div><img src={images && images.length ? images[0].url : laptop} alt="Apples Granny Smith" className="product-grid-image product-grid-cell_main-image" /></div>
-
-                              <div className="product-tile_detail">
-                                <div className="product-grid-cell_price-container product-grid-cell_price-container_column"><span role="link" className="product-grid-cell_main-price product-grid-cell_main-price--on-sale"> ₹{price} </span>
-                                  <div className="product-grid-cell_was-container"><span className="product-grid-cell_regular-price product-grid-cell_regular-price--small"> ₹{MRP} </span></div>
-                                </div>
-                              </div>
-                              <div className="product-tile_detail-title">
-                                <div data-v-7b5b6b2c role="link" tabIndex={0} className="product-grid-cell_name">
-                                  <h3 data-v-7b5b6b2c className="product-grid-cell_name-text product-grid-cell_name-text--small">
-                                    {title} </h3>
-                                </div>
-                                <div role="link" className="product-grid-cell_sizes"><span className="product-grid-cell_size"> 1 EA </span><span aria-hidden="true"> | </span>
-                                  {/**/}<span className="product-grid-cell_unit"> {description && description.substring(0, 10)}... </span></div>
-                                {/**/}
-                              </div>
-                              <div className="product-grid-cell_promo-name">
-
-                              </div>
-                              {/**/}
-                            </Link>
-
-
-
-
-
-                            <div className="margin-top--one">
-                              {/**/}
-                              <div data-v-2ac9e614 className="pdl-add-to-cart">
-                                <div data-v-2ac9e614 className="pdl-add-to-cart_button">
-                                  <button onClick={handleAddToCart} className="button button--add-to-cart" >
-
-                                    {product.quantity < 1 ? "Out of stock" : "Add to Cart"}
-
-                                  </button>
-                                  {/**/}
-                                </div>
-                                {/**/}
-                              </div>
-                            </div>
-                            {/**/}
-                          </div>
-                        </div>
-                      </li>
-
-
-
-                    </ul>
-                    {/**/}
-                    {/**/}
-                    {/**/}
+              <div className="product-tile_detail">
+                <div className="skeleton-loader_wrapper">
+                  <div className="product-grid-cell_price-container product-grid-cell_price-container_column"><span role="link" className="product-grid-cell_main-price product-grid-cell_main-price--on-sale"> ₹{price} </span>
+                    <div className="product-grid-cell_was-container"><span className="product-grid-cell_regular-price product-grid-cell_regular-price--small"> ₹{MRP} </span></div>
                   </div>
                 </div>
               </div>
+              <div className="product-tile_detail-title">
+                <div className="skeleton-loader_wrapper">
+                  <div data-v-12a9e0ca role="link" tabIndex={0} className="product-grid-cell_name">
+      <h3 data-v-12a9e0ca aria-label="Tilapia Fillets Boneless Fresh" className="product-grid-cell_name-text product-grid-cell_name-text--small product-grid-cell_name-text--clamp-2"> {title} </h3>
+                  </div>
+                </div>
+                <div className="skeleton-loader_wrapper">
+      <div role="link" className="product-grid-cell_sizes"><span className="product-grid-cell_size"> {ShelfLife} </span><span aria-hidden="true"> | </span><span className="product-grid-cell_unit"> {category.name} </span></div>
+                </div>
+              </div>
+            </Link>
+            <div className="product-grid-cell_promo-name" />
+            <div className="margin-top--one">
 
+              <div className="pdl-add-to-cart">
+                <div className="pdl-add-to-cart_button"><button onClick={handleAddToCart} className="button button--add-to-cart"> Add to Cart </button></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+        <div className="product-tile_action-items">
+          <div className="shopping-list-menu_container">
+            <div className="relative-el"><button aria-label="add to shopping list" className="button pdl-product-detail_top-icon button--fourth pdl-product-detail_top-icon--borderless">
+              <div className="vector-icon-size--large"><svg xmlns="http://www.w3.org/2000/svg" aria-label="Shopping List Icon Add" viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" className="vector-icon-color--dark-grey">
+                <title lang="en">Shopping List Icon Add</title>
+                <desc />
+                <g fill stroke>
+                  <path d="M21.94066,15.3368884 L21.94066,12.8931995 C21.94066,12.3409148 22.3883752,11.8931995 22.94066,11.8931995 C23.4929447,11.8931995 23.94066,12.3409148 23.94066,12.8931995 L23.94066,15.3368884 L26.2522624,15.3368884 C26.8045471,15.3368884 27.2522624,15.7846037 27.2522624,16.3368884 C27.2522624,16.8891732 26.8045471,17.3368884 26.2522624,17.3368884 L23.94066,17.3368884 L23.94066,19.8787952 C23.94066,20.43108 23.4929447,20.8787952 22.94066,20.8787952 C22.3883752,20.8787952 21.94066,20.43108 21.94066,19.8787952 L21.94066,17.3368884 L19.2666667,17.3368884 C18.7143819,17.3368884 18.2666667,16.8891732 18.2666667,16.3368884 C18.2666667,15.7846037 18.7143819,15.3368884 19.2666667,15.3368884 L21.94066,15.3368884 Z M8,12 C7.44771525,12 7,11.5522847 7,11 C7,10.4477153 7.44771525,10 8,10 L19.1153581,10 C19.6676429,10 20.1153581,10.4477153 20.1153581,11 C20.1153581,11.5522847 19.6676429,12 19.1153581,12 L8,12 Z M8,17.3368884 C7.44771525,17.3368884 7,16.8891732 7,16.3368884 C7,15.7846037 7.44771525,15.3368884 8,15.3368884 L14.7200696,15.3368884 C15.2723543,15.3368884 15.7200696,15.7846037 15.7200696,16.3368884 C15.7200696,16.8891732 15.2723543,17.3368884 14.7200696,17.3368884 L8,17.3368884 Z M8,23 C7.44771525,23 7,22.5522847 7,22 C7,21.4477153 7.44771525,21 8,21 L19.1153581,21 C19.6676429,21 20.1153581,21.4477153 20.1153581,22 C20.1153581,22.5522847 19.6676429,23 19.1153581,23 L8,23 Z" fill="#000000" fillRule="nonzero" />
+                </g>
+              </svg></div>
+              <div className="pdl-product-detail_list-tooltip">
+                <p>Add item to shopping list</p><em />
+              </div>
+            </button></div>
+          </div>
+        </div>
+      </li>
       {/* <div className="item-tile_button-container item-tile_button-container--desktop">
         <button onClick={handleAddToCart} id="shopNow-542423418" className="button button--shop-now button-width--full" data-gtm-vis-first-on-screen-12308077_534={20448} data-gtm-vis-total-visible-time-12308077_534={3000} data-gtm-vis-recent-on-screen-12308077_534={26664} data-gtm-vis-has-fired-12308077_534={1}>
 
@@ -496,7 +468,7 @@ const ProductCard = ({ product }) => {
           <section className="modal_content modal_content--scrollable modal_right-column modal_right-column_border">
             <div>
 
-            { console.log("attabey", related)}
+              {console.log("attabey", related)}
 
               <div className="item-detail_suggested-products product-view-search">
                 <div className="pdl-generic-content_container">
@@ -522,71 +494,71 @@ const ProductCard = ({ product }) => {
                                 related.map((r) => (
                                   <div key={r._id} className="col-md-4">
 
-<li className="tile product-cell product-grid-cell tile">
-                                {/**/}
-                                {/**/}
-                                {/**/}
-                                <div className="product-tile_content">
-                                  <div>
-                                    {/**/}
-                                    <div className="flag_outer-container">
+                                    <li className="tile product-cell product-grid-cell tile">
                                       {/**/}
                                       {/**/}
                                       {/**/}
-                                    </div>
-                                  </div>
-                                  {/**/}
-                                  <div><img src="https://i5.peapod.com/c/YC/YCQPK.jpg" alt="Hormel Black Label Bacon Original" className="product-grid-image product-grid-cell_main-image" /></div>
-                                  <div className="product-grid-cell_price-tag product-grid-cell_price-tag--full-tile">
-                                    <div className="product-tile_detail">
-                                      <div className="product-grid-cell_price-container"><span role="link" className="product-grid-cell_main-price"> {r.price} </span>
-                                        {/**/}
-                                      </div>
-                                    </div>
-                                    <div className="product-tile_detail-title">
-                                      <div  className="product-grid-cell_name">
-                                        <h3  className="product-grid-cell_name-text product-grid-cell_name-text--small">
-                                          {r.title} </h3>
-                                      </div>
-
-                                      {/**/}
-                                    </div>
-                                    <div className="product-grid-cell_promo-name">
-
-                                    </div>
-                                    <div className="margin-top--one">
-                                      {/**/}
-                                      <div data-v-2ac9e614 className="pdl-add-to-cart">
-                                        <div data-v-2ac9e614 className="pdl-add-to-cart_button"><button className="button button--add-to-cart"> Add to Cart
-                                      {/**/}</button>
+                                      <div className="product-tile_content">
+                                        <div>
                                           {/**/}
+                                          <div className="flag_outer-container">
+                                            {/**/}
+                                            {/**/}
+                                            {/**/}
+                                          </div>
                                         </div>
                                         {/**/}
+                                        <div><img src="https://i5.peapod.com/c/YC/YCQPK.jpg" alt="Hormel Black Label Bacon Original" className="product-grid-image product-grid-cell_main-image" /></div>
+                                        <div className="product-grid-cell_price-tag product-grid-cell_price-tag--full-tile">
+                                          <div className="product-tile_detail">
+                                            <div className="product-grid-cell_price-container"><span role="link" className="product-grid-cell_main-price"> {r.price} </span>
+                                              {/**/}
+                                            </div>
+                                          </div>
+                                          <div className="product-tile_detail-title">
+                                            <div className="product-grid-cell_name">
+                                              <h3 className="product-grid-cell_name-text product-grid-cell_name-text--small">
+                                                {r.title} </h3>
+                                            </div>
+
+                                            {/**/}
+                                          </div>
+                                          <div className="product-grid-cell_promo-name">
+
+                                          </div>
+                                          <div className="margin-top--one">
+                                            {/**/}
+                                            <div data-v-2ac9e614 className="pdl-add-to-cart">
+                                              <div data-v-2ac9e614 className="pdl-add-to-cart_button"><button className="button button--add-to-cart"> Add to Cart
+                                      {/**/}</button>
+                                                {/**/}
+                                              </div>
+                                              {/**/}
+                                            </div>
+                                          </div>
+                                          {/**/}
+                                        </div>
                                       </div>
-                                    </div>
-                                    {/**/}
-                                  </div>
-                                </div>
-                                {/**/}
-                                {/**/}
-                                <div className="product-tile_action-items">
-                                  <div className="shopping-list-menu_container">
-                                    <div className="relative-el"><button aria-label="add to shopping list" className="button pdl-product-detail_top-icon button--fourth pdl-product-detail_top-icon--borderless">
-                                      <div className="vector-icon-size--large"><svg xmlns="http://www.w3.org/2000/svg" aria-label="Shopping List Icon Add" viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" className="vector-icon-color--dark-grey">
-                                        <title lang="en">Shopping List Icon Add</title>
-                                        <desc />
-                                        <g fill stroke>
-                                          <path d="M21.94066,15.3368884 L21.94066,12.8931995 C21.94066,12.3409148 22.3883752,11.8931995 22.94066,11.8931995 C23.4929447,11.8931995 23.94066,12.3409148 23.94066,12.8931995 L23.94066,15.3368884 L26.2522624,15.3368884 C26.8045471,15.3368884 27.2522624,15.7846037 27.2522624,16.3368884 C27.2522624,16.8891732 26.8045471,17.3368884 26.2522624,17.3368884 L23.94066,17.3368884 L23.94066,19.8787952 C23.94066,20.43108 23.4929447,20.8787952 22.94066,20.8787952 C22.3883752,20.8787952 21.94066,20.43108 21.94066,19.8787952 L21.94066,17.3368884 L19.2666667,17.3368884 C18.7143819,17.3368884 18.2666667,16.8891732 18.2666667,16.3368884 C18.2666667,15.7846037 18.7143819,15.3368884 19.2666667,15.3368884 L21.94066,15.3368884 Z M8,12 C7.44771525,12 7,11.5522847 7,11 C7,10.4477153 7.44771525,10 8,10 L19.1153581,10 C19.6676429,10 20.1153581,10.4477153 20.1153581,11 C20.1153581,11.5522847 19.6676429,12 19.1153581,12 L8,12 Z M8,17.3368884 C7.44771525,17.3368884 7,16.8891732 7,16.3368884 C7,15.7846037 7.44771525,15.3368884 8,15.3368884 L14.7200696,15.3368884 C15.2723543,15.3368884 15.7200696,15.7846037 15.7200696,16.3368884 C15.7200696,16.8891732 15.2723543,17.3368884 14.7200696,17.3368884 L8,17.3368884 Z M8,23 C7.44771525,23 7,22.5522847 7,22 C7,21.4477153 7.44771525,21 8,21 L19.1153581,21 C19.6676429,21 20.1153581,21.4477153 20.1153581,22 C20.1153581,22.5522847 19.6676429,23 19.1153581,23 L8,23 Z" fill="#000000" fillRule="nonzero" />
-                                        </g>
-                                      </svg></div>
-                                      <div className="pdl-product-detail_list-tooltip">
-                                        <p>Add item to shopping list</p><em />
+                                      {/**/}
+                                      {/**/}
+                                      <div className="product-tile_action-items">
+                                        <div className="shopping-list-menu_container">
+                                          <div className="relative-el"><button aria-label="add to shopping list" className="button pdl-product-detail_top-icon button--fourth pdl-product-detail_top-icon--borderless">
+                                            <div className="vector-icon-size--large"><svg xmlns="http://www.w3.org/2000/svg" aria-label="Shopping List Icon Add" viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" className="vector-icon-color--dark-grey">
+                                              <title lang="en">Shopping List Icon Add</title>
+                                              <desc />
+                                              <g fill stroke>
+                                                <path d="M21.94066,15.3368884 L21.94066,12.8931995 C21.94066,12.3409148 22.3883752,11.8931995 22.94066,11.8931995 C23.4929447,11.8931995 23.94066,12.3409148 23.94066,12.8931995 L23.94066,15.3368884 L26.2522624,15.3368884 C26.8045471,15.3368884 27.2522624,15.7846037 27.2522624,16.3368884 C27.2522624,16.8891732 26.8045471,17.3368884 26.2522624,17.3368884 L23.94066,17.3368884 L23.94066,19.8787952 C23.94066,20.43108 23.4929447,20.8787952 22.94066,20.8787952 C22.3883752,20.8787952 21.94066,20.43108 21.94066,19.8787952 L21.94066,17.3368884 L19.2666667,17.3368884 C18.7143819,17.3368884 18.2666667,16.8891732 18.2666667,16.3368884 C18.2666667,15.7846037 18.7143819,15.3368884 19.2666667,15.3368884 L21.94066,15.3368884 Z M8,12 C7.44771525,12 7,11.5522847 7,11 C7,10.4477153 7.44771525,10 8,10 L19.1153581,10 C19.6676429,10 20.1153581,10.4477153 20.1153581,11 C20.1153581,11.5522847 19.6676429,12 19.1153581,12 L8,12 Z M8,17.3368884 C7.44771525,17.3368884 7,16.8891732 7,16.3368884 C7,15.7846037 7.44771525,15.3368884 8,15.3368884 L14.7200696,15.3368884 C15.2723543,15.3368884 15.7200696,15.7846037 15.7200696,16.3368884 C15.7200696,16.8891732 15.2723543,17.3368884 14.7200696,17.3368884 L8,17.3368884 Z M8,23 C7.44771525,23 7,22.5522847 7,22 C7,21.4477153 7.44771525,21 8,21 L19.1153581,21 C19.6676429,21 20.1153581,21.4477153 20.1153581,22 C20.1153581,22.5522847 19.6676429,23 19.1153581,23 L8,23 Z" fill="#000000" fillRule="nonzero" />
+                                              </g>
+                                            </svg></div>
+                                            <div className="pdl-product-detail_list-tooltip">
+                                              <p>Add item to shopping list</p><em />
+                                            </div>
+                                          </button>
+                                          </div>
+                                        </div>
                                       </div>
-                                    </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </li>
+                                    </li>
 
                                   </div>
                                 ))

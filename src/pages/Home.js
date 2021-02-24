@@ -4,7 +4,7 @@ import NewArrivals from "../components/home/NewArrivals";
 import BestSellers from "../components/home/BestSellers";
 import CategoryList from "../components/category/CategoryList";
 import SubList from "../components/sub/SubList";
-import { Carousel } from 'antd';
+import { Carousel, Divider } from 'antd';
 import BeveragesBanner from "../images/BeveragesBanner.jpg";
 import second from "../images/second.jpg"
 import third from "../images/third.jpg"
@@ -39,9 +39,12 @@ const Home = () => {
 
   return (
     <>
+    
       <div className="jumbotron button--shop-now h1 font-weight-bold text-center">
         <Jumbotron text={["Welcome to Optima Mart", "Fresh Groceries", "Unbeatable Prices", "Best Sellers"]} />
       </div>
+
+      
 
       <Carousel autoplay>
 
@@ -206,56 +209,19 @@ const Home = () => {
         </div>
       </Carousel>
 
-      <div className="p-3 mt-5 mb-5 display-4 jumbotron" style={{ display: 'flex', justifyContent: 'space-between' }}>
-
-        <span className="text-center ">
-
-        </span>
-
-        <span>
-          <h4 >New Arrivals</h4>
-        </span>
-
-        <span>
-          <Link to="/shop">
-            <button className="zone-block_link mr-5 " style={{ float: 'right' }} >
-              View All
-          </button>
-          </Link>
-
-        </span>
+      <Divider />
 
 
-
-      </div>
       <NewArrivals />
 
-      <div className="p-3 mt-5 mb-5 display-4 jumbotron" style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <Divider />
 
-        <span className="text-center ">
-
-        </span>
-
-        <span>
-          <h4 >Best Sellers</h4>
-        </span>
-
-        <span>
-          <Link to="/shop">
-            <button className="zone-block_link mr-5 " style={{ float: 'right' }} >
-              View All
-          </button>
-          </Link>
-
-        </span>
-
-
-
-      </div>
       <BestSellers />
 
       <br />
       <br />
+
+      
     </>
   );
 };
