@@ -11,6 +11,7 @@ import third from "../images/third.jpg"
 import fourth from "../images/fourth.jpg"
 import fifth from "../images/fifth.jpg"
 import { Link } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive'
 
 
 
@@ -21,16 +22,19 @@ const Home = () => {
     console.log(a, b, c);
   }
 
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 850px)' })
+
+
   const contentStyle = {
-    height: '300px',
+    height: '26rem',
     color: '#fff',
     margin: '0 auto',
-    width: '100%',
+    width: '80%',
     lineHeight: '160px',
     textAlign: 'center',
     background: '#364d79',
     margin: '0 auto',
-    maxWidth: '124rem'
+    maxWidth: '100rem'
   };
 
   return (
@@ -40,13 +44,151 @@ const Home = () => {
       </div>
 
       <Carousel autoplay>
+
+      <div>
+        <Link to="/new-customer">
         <div>
-          <a href="/new-customer">
-            <img src={fifth} style={contentStyle} />
-          </a>
+          {isTabletOrMobile ? (
+            <div className="margin-bottom--one pdl-generic-content_container--max">
+              <div tabIndex={-1} className="pdl-carousel_item _carousel-item" style={{ margin: '10 10 10 0', width: '100%'}}>
+                <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
+                  {/**/}
+                  <div className="kwm-tile kwm-colors--primary link-pointer">
+                    <div className="kwm-tile_image-container" style={{ backgroundImage: 'url("https://i5.peapod.com/c/11/11YNJ.jpg")' }}>
+                      {/**/}
+                      <div>
+                        <div className="kwm-message-mobile">
+                          <div><span className="kwm-message-mobile_headline">Welcome To Optima Mart</span><span className="kwm-message-mobile_bodycopy">Click here to get Started</span></div>
+                          <div className="kwm-message-mobile_carot-icon">
+                            <div className="vector-icon-size--medium"><svg xmlns="http://www.w3.org/2000/svg" aria-label="right arrow" viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" className>
+                              <title lang="en">right arrow</title>
+                              <desc />
+                              <g fill stroke>
+                                <polyline fill="none" strokeLinecap="square" strokeWidth={2} points="13.2425 7.7575 21.728 16.2425 13.2425 24.728" />
+                              </g>
+                            </svg></div>
+                          </div>
+                        </div>
+                        {/**/}
+                      </div>
+                    </div>
+                  </div>
+                  {/**/}
+                  {/**/}
+                </div>
+                {/**/}
+                {/**/}
+              </div>
+            </div>
+          ) : (
+
+              <div className="margin-bottom--one pdl-generic-content_container--max">
+
+                <div className="pdl-carousel_item _carousel-item" style={{ height: '26rem', width: '100%', textAlign: 'center' }}>
+                  <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
+                    {/**/}
+                    <div className="kwm-tile kwm-colors--primary link-pointer">
+                      <div className="kwm-tile_image-container" style={{ backgroundImage: 'url("https://i5.peapod.com/c/O1/O1TV9.jpg")' }}>
+                        <div className="kwm-message_container kwm-message_container--right">
+                          <div className="kwm-message_content">
+                            <div className="kwm-message">
+                              <div className="kwm-message_headline kwm-message_headline--small">Welcome To Optima Mart</div>
+                              <div className="kwm-message_bodycopy">Click here to get Started</div>
+                              <div className="kwm-message_btn-container"><button className="btn kwm-message_btn kwm-message_btn--flat"><span>Shop Now</span></button></div>
+                              {/**/}
+                            </div>
+                          </div>
+                        </div>
+                        {/**/}
+                      </div>
+                    </div>
+                    {/**/}
+                    {/**/}
+                  </div>
+                  {/**/}
+                  {/**/}
+                </div>
+              </div>
+
+            )}
         </div>
+        </Link>
+
+        </div>
+
         <div>
-          <a href="/shop/home-and-office">
+          {isTabletOrMobile ? (
+            <div className="margin-bottom--one pdl-generic-content_container--max">
+              <div tabIndex={-1} className="pdl-carousel_item _carousel-item" style={{ margin: '10 10 10 0', width: '100%'}}>
+                <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
+                  {/**/}
+                  <div className="kwm-tile kwm-colors--primary link-pointer">
+                    <div className="kwm-tile_image-container" style={{ backgroundImage: 'url("https://i5.peapod.com/c/36/36STI.jpg")' }}>
+                      {/**/}
+                      <div>
+                        <div className="kwm-message-mobile">
+                          <div><span className="kwm-message-mobile_headline">₹150 when you buy 3</span><span className="kwm-message-mobile_bodycopy">Nabisco family-size snacks.</span></div>
+                          <div className="kwm-message-mobile_carot-icon">
+                            <div className="vector-icon-size--medium"><svg xmlns="http://www.w3.org/2000/svg" aria-label="right arrow" viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" className>
+                              <title lang="en">right arrow</title>
+                              <desc />
+                              <g fill stroke>
+                                <polyline fill="none" strokeLinecap="square" strokeWidth={2} points="13.2425 7.7575 21.728 16.2425 13.2425 24.728" />
+                              </g>
+                            </svg></div>
+                          </div>
+                        </div>
+                        {/**/}
+                      </div>
+                    </div>
+                  </div>
+                  {/**/}
+                  {/**/}
+                </div>
+                {/**/}
+                {/**/}
+              </div>
+            </div>
+          ) : (
+
+              <div className="margin-bottom--one pdl-generic-content_container--max">
+
+                <div className="pdl-carousel_item _carousel-item" style={{ height: '26rem', width: '100%', textAlign: 'center' }}>
+                  <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
+                    {/**/}
+                    <div className="kwm-tile kwm-colors--primary link-pointer">
+                      <div className="kwm-tile_image-container" style={{ backgroundImage: 'url("https://i5.peapod.com/c/85/85LQC.jpg")' }}>
+                        <div className="kwm-message_container kwm-message_container--left">
+                          <div className="kwm-message_content">
+                            <div className="kwm-message">
+                              <div className="kwm-message_headline kwm-message_headline--small">₹150 when you buy 3</div>
+                              <div className="kwm-message_bodycopy">Nabisco family-size cookies or crackers.</div>
+                              <div className="kwm-message_btn-container"><button className="btn kwm-message_btn kwm-message_btn--flat"><span>Shop Now</span></button></div>
+                              {/**/}
+                            </div>
+                          </div>
+                        </div>
+                        {/**/}
+                      </div>
+                    </div>
+                    {/**/}
+                    {/**/}
+                  </div>
+                  {/**/}
+                  {/**/}
+                </div>
+              </div>
+
+            )}
+
+
+        </div>
+
+
+
+        
+        <div>
+          <a href="/shop/home-care">
             <img src={second} style={contentStyle} />
           </a>
         </div>
@@ -57,63 +199,56 @@ const Home = () => {
           </a>
         </div>
         <div>
-          <a href="/shop/frozen">
+          <a href="/shop/ready-to-eat">
             <img src={fourth} style={contentStyle} />
 
           </a>
         </div>
-        <div>
-          <a href="/shop/beverages">
-            <img src={BeveragesBanner} style={contentStyle} />
-
-          </a>
-
-        </div>
       </Carousel>
 
-      <div className="p-3 mt-5 mb-5 display-4 jumbotron" style={{display: 'flex', justifyContent: 'space-between'}}>
-        
+      <div className="p-3 mt-5 mb-5 display-4 jumbotron" style={{ display: 'flex', justifyContent: 'space-between' }}>
+
         <span className="text-center ">
-      
+
         </span>
 
         <span>
-        <h4 >New Arrivals</h4>
+          <h4 >New Arrivals</h4>
         </span>
 
         <span>
-        <Link to="/shop">
-        <button className="zone-block_link mr-5 " style={{float: 'right'}} > 
-        View All 
+          <Link to="/shop">
+            <button className="zone-block_link mr-5 " style={{ float: 'right' }} >
+              View All
           </button>
-        </Link>
+          </Link>
 
         </span>
- 
+
 
 
       </div>
       <NewArrivals />
 
-      <div className="p-3 mt-5 mb-5 display-4 jumbotron" style={{display: 'flex', justifyContent: 'space-between'}}>
-        
+      <div className="p-3 mt-5 mb-5 display-4 jumbotron" style={{ display: 'flex', justifyContent: 'space-between' }}>
+
         <span className="text-center ">
-      
+
         </span>
 
         <span>
-        <h4 >Best Sellers</h4>
+          <h4 >Best Sellers</h4>
         </span>
 
         <span>
-        <Link to="/shop">
-        <button className="zone-block_link mr-5 " style={{float: 'right'}} > 
-        View All 
+          <Link to="/shop">
+            <button className="zone-block_link mr-5 " style={{ float: 'right' }} >
+              View All
           </button>
-        </Link>
+          </Link>
 
         </span>
- 
+
 
 
       </div>

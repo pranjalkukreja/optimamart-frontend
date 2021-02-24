@@ -9,7 +9,7 @@ const AboutUs = () => {
     query: '(min-device-width: 1224px)'
   })
   const isBigScreen = useMediaQuery({ query: '(min-device-width: 1824px)' })
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 850px)' })
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 500px)' })
   const isTabletOrMobileDevice = useMediaQuery({
     query: '(max-device-width: 600px)'
   })
@@ -21,7 +21,7 @@ const AboutUs = () => {
          <BlackNavigation title="About Us" />
         
          <div className="pdl-generic-content_container">
-           <div>
+           {/* <div>
            <h1>Device Test!</h1>
       {isDesktopOrLaptop && <>
         <p>You are a desktop or laptop</p>
@@ -33,7 +33,7 @@ const AboutUs = () => {
       <p>Your are in {isPortrait ? 'portrait' : 'landscape'} orientation</p>
       {isRetina && <p>You are retina</p>}
 
-           </div>
+           </div> */}
   <div className="pdl-generic-content_wrapper pdl-generic-content_container--max">
     {isTabletOrMobile ? (
       <h1>mobile</h1>

@@ -35,6 +35,8 @@ import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 import { getCategories } from "../../functions/category";
 import laptop from "../../images/laptop.png";
 import { Divider } from 'antd';
+import disableScroll from 'disable-scroll';
+
 
 
 
@@ -48,6 +50,10 @@ const Header = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
+
+  const closeSidebar = () => setSidebar(sidebar);
+
+  
 
   let dispatch = useDispatch();
   let { user, cart } = useSelector((state) => ({ ...state }));
@@ -172,8 +178,11 @@ const Header = () => {
                 </button>
               </Link>
             </div>
-            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-              <ul className='nav-menu-items' onClick={showSidebar}>
+            <div className={sidebar ? 'parentDisable' : ''} style={{overflow:"hidden"}} onClick={showSidebar} >
+              
+            <nav className={sidebar ? 'nav-menu active' : 'nav-menu  '} 
+            >
+              <ul className='nav-menu-items ' onClick={showSidebar} >
                 <li className='navbar-toggle'>
                   <Link to='#' className='menu-bars'>
                     <AiIcons.AiOutlineClose />
@@ -211,7 +220,6 @@ const Header = () => {
                               <UserAddOutlined />
                               <div className="pdl-shopping-mode-tile_text_content pdl-shopping-mode-tile_text_content--standalone">
                                 <h3 className="text--base-strong"> Sign Up </h3>
-                                <p className="pdl-shopping-mode-tile_sub-text"> Welcome </p>
                               </div>
                               {/**/}
                             </Link>
@@ -268,6 +276,11 @@ const Header = () => {
 
               </ul>
             </nav>
+
+            </div>
+
+
+
 
 
           <div className="global-header_logo-container">

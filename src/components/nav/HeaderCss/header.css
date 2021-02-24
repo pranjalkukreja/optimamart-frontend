@@ -7776,7 +7776,7 @@
   }
   
   .pdl-carousel_item {
-    flex: 0 0 auto;
+    /* flex: 0 0 auto; */
     height: 100%;
     overflow: hidden
   }
@@ -9873,6 +9873,11 @@
     height: 4.4rem;
     width: 100%;
     border-radius: 1rem 1rem 0 0
+  }
+  
+  .imageSet {
+    max-width: 500px;
+    max-height: 500px;
   }
   
   .typeahead-container_input-field--active .search-button {
@@ -25508,6 +25513,7 @@ btn--mobile1 {
     margin-top: 0
   }
   
+
   .pdl-static-product_text {
     padding-bottom: 2rem
   }

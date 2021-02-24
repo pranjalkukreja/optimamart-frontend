@@ -75,10 +75,10 @@ const SingleProduct = ({ product, onStarClick, star }) => {
 
   return (
     <>
-      <div className="col-md-7">
+      <div className="col-md-5">
         {images && images.length ? (
           <Carousel showArrows={true} autoPlay infiniteLoop>
-            {images && images.map((i) => <img src={i.url} key={i.public_id} />)}
+            {images && images.map((i) => <img src={i.url} key={i.public_id}  />)}
           </Carousel>
         ) : (
           <Card cover={<img src={Laptop} className="mb-3 card-image" />}></Card>
@@ -94,8 +94,8 @@ const SingleProduct = ({ product, onStarClick, star }) => {
         </Tabs>
       </div>
 
-      <div className="col-md-5">
-        <h1 className="bg-info p-3">{title}</h1>
+      <div className="col-md-7">
+        <h1 className="bg-info text-center kwm-message_headline">{title}</h1>
 
         {product && product.ratings && product.ratings.length > 0 ? (
           showAverage(product)

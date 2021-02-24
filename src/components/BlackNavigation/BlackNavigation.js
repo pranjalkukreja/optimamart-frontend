@@ -1,10 +1,13 @@
 import react from 'react'
+import { Link } from "react-router-dom";
 
 const BlackNavigation = ({title}) => {
     return (
         <div>
   <div className="title-bar">
-    <div className="title-bar_left"><button className="title-bar_back-button" onClick="/"><span className="element-invisible"> Back </span>
+    <div className="title-bar_left">
+      <Link to="/">
+      <button className="title-bar_back-button" onClick="/"><span className="element-invisible"> Back </span>
         <div className="title-bar_back-icon"><svg xmlns="http://www.w3.org/2000/svg" aria-label="Back" viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" className>
             <title lang="en">Back</title>
             <desc />
@@ -13,6 +16,7 @@ const BlackNavigation = ({title}) => {
             </g>
           </svg></div>
       </button>
+      </Link>
       {/**/}
     </div>
     <h1 className="title-bar_text"> {title} </h1>
