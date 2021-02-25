@@ -11,6 +11,7 @@ import { Menu, Slider, Checkbox, Radio } from "antd";
 import SideSubCategories from '../pages/category/SideSubCategories'
 import TopCategories from '../pages/category/TopCategories'
 import BlackNavigation from '../components/BlackNavigation/BlackNavigation'
+import { useMediaQuery } from 'react-responsive'
 
 
 
@@ -68,6 +69,11 @@ const Shop = () => {
       setProducts(res.data);
     });
   };
+
+  const isTablet = useMediaQuery({ query: '(max-width: 800px)' })
+  const isNormalScreen = useMediaQuery({ query: '(max-width: 1200px' })
+  const isMobile = useMediaQuery({ query: '(max-width: 600px' })
+
 
   // 1. load products by default on page load
   const loadAllProducts = () => {
@@ -319,11 +325,11 @@ const Shop = () => {
   return (
     <div className="container-fluid">
       <BlackNavigation title="Browse Aisles" />
+
       <div className="row">
         <div className="col-md-3 pt-2">
           <hr />
           <Menu
-            defaultOpenKeys={["1", "2", "3", "4", "5", "6", "7"]}
             mode="inline"
           >
             <SubMenu
@@ -361,24 +367,13 @@ const Shop = () => {
               </div>
             </SubMenu>
 
-
-            <SubMenu
-              key="7"
-              title={
-                <span className="h6">
-                  <DownSquareOutlined /> Shipping
-    </span>
-              }
-            >
-              <div style={{ maringTop: "-10px" }} className="pr-5">
-                {showShipping()}
-              </div>
-            </SubMenu>
           </Menu>
 
         </div>
 
         <div className="col-md-9 pt-2">
+
+
           {loading ? (
             <h4 className="text-danger">Loading...</h4>
           ) : (
@@ -387,12 +382,44 @@ const Shop = () => {
 
           {products.length < 1 && <p>No products found</p>}
 
-          <div className="row pb-5">
-            {products.map((p) => (
-              <div key={p._id} className="col-md-3 mt-3">
-                <ProductCard product={p} />
+          <div className="tabs-details">
+            <div id="panel-grid-view" role="tabpanel" aria-labelledby="grid-view">
+              <div>
+                <div className="generic-content_wrapper">
+                  <div className="item-list-controls margin-bottom--two weekly-ad_list-controls">
+
+                  </div>
+                  {!isNormalScreen ? (
+                    <ul className="tile-list tile-list--quint">
+                      {products.map((product) => (
+                        <ProductCard product={product} />
+                      ))}
+                    </ul>
+                  ) : (
+                      <>
+                        {!isTablet ? (
+                          <ul className="tile-list tile-list--triple">
+
+                            {products.map((product) => (
+                              <ProductCard product={product} />
+                            ))}
+                          </ul>
+                        ) : (
+                            <ul className="tile-list tile-list--double">
+
+                              {products.map((product) => (
+                                <ProductCard product={product} />
+                              ))}
+                            </ul>
+                          )}
+                      </>
+                    )}
+
+                </div>
+                {/* <div className="color-bar"><button className="button button--second button-width--lg"> Show More </button></div> */}
               </div>
-            ))}
+            </div>
+            <div id="panel-print-view" role="tabpanel" aria-labelledby="print-view" aria-hidden="true" style={{ display: 'none' }} />
           </div>
         </div>
       </div>

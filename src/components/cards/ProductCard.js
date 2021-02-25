@@ -8,6 +8,8 @@ import { showAverage } from "../../functions/rating";
 import _ from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct, productStar, getRelated } from "../../functions/product";
+import OMF from "../../images/OMF.jpg";
+
 
 
 const { Meta } = Card;
@@ -84,28 +86,52 @@ const ProductCard = ({ product }) => {
 
       <li className="tile product-cell product-grid-cell tile" content="[object Object]">
         <div className="product-tile_content">
-          <div>
-            <div className="flag_outer-container"><span className="flag_label flag_label--tomato"> Sale </span></div>
-          </div>
+          {price < MRP && (
+            <div>
+              <div className="flag_outer-container"><span className="flag_label flag_label--tomato"> Sale {Math.round((price / MRP) * 100)}% </span></div>
+            </div>
+          )}
+
           <div className="product-grid-cell_price-tag product-grid-cell_price-tag--full-tile">
             <Link to={`/product/${slug}`}>
-            <div><img src={images && images.length ? images[0].url : laptop} className="product-grid-image product-grid-cell_main-image" /></div>
+              <div><img src={images && images.length ? images[0].url : laptop} className="product-grid-image product-grid-cell_main-image" /></div>
 
               <div className="product-tile_detail">
                 <div className="skeleton-loader_wrapper">
-                  <div className="product-grid-cell_price-container product-grid-cell_price-container_column"><span role="link" className="product-grid-cell_main-price product-grid-cell_main-price--on-sale"> ₹{price} </span>
-                    <div className="product-grid-cell_was-container"><span className="product-grid-cell_regular-price product-grid-cell_regular-price--small"> ₹{MRP} </span></div>
-                  </div>
+                  {price < MRP ? (
+                    <div className="product-grid-cell_price-container product-grid-cell_price-container_column"><span role="link" className="product-grid-cell_main-price product-grid-cell_main-price--on-sale"> ₹{price} </span>
+                      <div className="product-grid-cell_was-container"><span className="product-grid-cell_regular-price product-grid-cell_regular-price--small"> ₹{MRP} </span></div>
+                    </div>
+                  ) : (
+                      <div className="product-grid-cell_price-container">
+                        <h3 className="product-grid-cell_main-price"> ₹{price} </h3>
+                      </div>
+                    )}
+
                 </div>
               </div>
               <div className="product-tile_detail-title">
                 <div className="skeleton-loader_wrapper">
                   <div data-v-12a9e0ca role="link" tabIndex={0} className="product-grid-cell_name">
-      <h3 data-v-12a9e0ca aria-label="Tilapia Fillets Boneless Fresh" className="product-grid-cell_name-text product-grid-cell_name-text--small product-grid-cell_name-text--clamp-2"> {title} </h3>
+
+                    <h3 data-v-12a9e0ca aria-label="Tilapia Fillets Boneless Fresh" className="product-grid-cell_name-text product-grid-cell_name-text--small product-grid-cell_name-text--clamp-2">
+                      {brand.name == 'Optima Mart' ? (
+                      <span data-v-12a9e0ca className="vector-icon_inline-text--left">
+                      <div data-v-12a9e0ca className="vector-icon-size--xsmall">
+                        <img src={OMF} alt=""/>
+                      </div>
+                    </span>
+
+                      ) : (
+                        <h1>no</h1>
+                      )}
+
+                      {title}
+                    </h3>
                   </div>
                 </div>
                 <div className="skeleton-loader_wrapper">
-      <div role="link" className="product-grid-cell_sizes"><span className="product-grid-cell_size"> {ShelfLife} </span><span aria-hidden="true"> | </span><span className="product-grid-cell_unit"> {category.name} </span></div>
+                  <div role="link" className="product-grid-cell_sizes"><span className="product-grid-cell_size"> {ShelfLife} </span><span aria-hidden="true"> | </span><span className="product-grid-cell_unit"> {category.name} </span></div>
                 </div>
               </div>
             </Link>

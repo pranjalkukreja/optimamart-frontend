@@ -100,7 +100,7 @@ const ProduceAisle = ({ match }) => {
                             </div>
                         </SubMenu>
 
-                        <SubMenu
+                        {/* <SubMenu
                             key="2"
                             title={
                                 <span className="h6">
@@ -111,7 +111,7 @@ const ProduceAisle = ({ match }) => {
                             <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
                                 {showSubs()}
                             </div>
-                        </SubMenu>
+                        </SubMenu> */}
                     </Menu>
                 </div>
 
