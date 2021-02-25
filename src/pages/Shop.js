@@ -70,9 +70,9 @@ const Shop = () => {
     });
   };
 
-  const isTablet = useMediaQuery({ query: '(max-width: 800px)' })
+  const isTablet = useMediaQuery({ query: '(max-width: 900px)' })
   const isNormalScreen = useMediaQuery({ query: '(max-width: 1200px' })
-  const isMobile = useMediaQuery({ query: '(max-width: 600px' })
+  const isMobile = useMediaQuery({ query: '(max-width: 700px' })
 
 
   // 1. load products by default on page load
@@ -424,7 +424,7 @@ const Shop = () => {
                   ) : (
                       <>
                         {isTablet ? (
-                          <ul className="tile-list tile-list--triple">
+                          <ul className="tile-list tile-list--double">
 
                             {products.map((product) => (
                               <ProductCard product={product} />

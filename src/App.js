@@ -49,6 +49,7 @@ const SideDrawer = lazy(() => import("./components/drawer/SideDrawer"));
 const RegisterComplete = lazy(() => import("./pages/auth/RegisterComplete"));
 const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword"));
 const History = lazy(() => import("./pages/user/History"));
+const Dashboard = lazy(() => import("./pages/user/Dashboard"));
 const UserRoute = lazy(() => import("./components/routes/UserRoute"));
 const AdminRoute = lazy(() => import("./components/routes/AdminRoute"));
 const Password = lazy(() => import("./pages/user/Password"));
@@ -138,6 +139,7 @@ const App = () => {
         <Route exact path="/forgot/password" component={ForgotPassword} />
         <UserRoute exact path="/user/history" component={History} />
         <UserRoute exact path="/user/password" component={Password} />
+        <UserRoute exact path="/user/dashboard" component={Dashboard} />
         <UserRoute exact path="/user/wishlist" component={Wishlist} />
         <Route exact path="/categories" component={Listing} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />

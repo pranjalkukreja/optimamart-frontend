@@ -113,13 +113,7 @@ const ProductCardInCheckout = ({ p }) => {
             onChange={handleQuantityChange}
           />
         </td>
-        <td className="text-center">
-          {p.shipping === "Yes" ? (
-            <CheckCircleOutlined className="text-success" />
-          ) : (
-            <CloseCircleOutlined className="text-danger" />
-          )}
-        </td>
+
         <td className="text-center">
           <CloseOutlined
             onClick={handleRemove}

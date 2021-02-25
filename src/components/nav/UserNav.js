@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 const UserNav = () => (
   <nav>
     <ul className="nav flex-column">
+
+    <li className="nav-item">
+        <Link to="/user/dashboard" className="nav-link">
+          Dashboard
+        </Link>
+      </li>
+
       <li className="nav-item">
         <Link to="/user/history" className="nav-link">
           History

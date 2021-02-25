@@ -47,7 +47,6 @@ const Cart = ({ history }) => {
           <th scope="col">Price</th>
 
           <th scope="col">Count</th>
-          <th scope="col">Shipping</th>
           <th scope="col">Remove</th>
         </tr>
       </thead>
@@ -91,7 +90,7 @@ const Cart = ({ history }) => {
             {getTotal() > 600 ? (
                            <button
                            onClick={saveOrderToDb}
-                           className="btn btn-sm btn-primary mt-2"
+                           className="button cart-modal_button button--third button-width--full btn-primary"
                            disabled={!cart.length}
                          >
                            Proceed to Online Payment
@@ -99,7 +98,7 @@ const Cart = ({ history }) => {
             ) : (
               <button
               onClick={saveOrderToDb}
-              className="btn btn-sm btn-primary mt-2"
+              className="btn button cart-modal_button button--third btn-sm button-width--full btn-primary mt-2"
               disabled={cart.length}
             >
               Minimum Order Value 600
@@ -110,7 +109,7 @@ const Cart = ({ history }) => {
               {getTotal() > 1000 ? (
               <button
                 onClick={saveCashOrderToDb}
-                className="btn btn-sm btn-warning mt-2"
+                className="button cart-modal_button button--third button-width--full btn-primary"
                 disabled={!cart.length}
               >
                 Pay Cash on Delivery
@@ -118,7 +117,7 @@ const Cart = ({ history }) => {
             ) : (
               <button
               onClick={saveCashOrderToDb}
-              className="btn btn-sm btn-primary mt-2"
+              className="btn button cart-modal_button button--third btn-sm button-width--full btn-primary mt-2"
               disabled={cart.length}
             >
               COD Minimum ₹1,000
@@ -126,7 +125,7 @@ const Cart = ({ history }) => {
             )}
             </>
           ) : (
-            <button className="btn btn-sm btn-primary mt-2">
+            <button className="button cart-modal_button button--third button-width--full btn-primary">
               <Link
                 to={{
                   pathname: "/login",

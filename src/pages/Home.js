@@ -335,7 +335,7 @@ const Home = () => {
                 <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
                   {/**/}
                   <div className="kwm-tile kwm-colors--primary link-pointer">
-                    <div className="kwm-tile_image-container" style={{ backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/ashillc-housing.appspot.com/o/OMPICS%2FBeverages-1.jpg?alt=media&token=502085ce-dcdf-4bdf-a821-52e390362735")' }}>
+                    <div className="kwm-tile_image-container" style={{ backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/ashillc-housing.appspot.com/o/OMPICS%2FFrozen.jpg?alt=media&token=d912e01d-0d6d-476a-98ec-9ca1c62e1ff8")' }}>
                       {/**/}
                       <div>
                         <div className="kwm-message-mobile">
