@@ -88,7 +88,15 @@ const ProductCard = ({ product }) => {
         <div className="product-tile_content">
           {price < MRP && (
             <div>
-              <div className="flag_outer-container"><span className="flag_label flag_label--tomato"> Sale {100 - (Math.round((price / MRP) * 100))}% </span></div>
+              <div className="flag_outer-container"><span className="flag_label flag_label--tomato"> Sale  
+              {' '}
+              {(100 - (Math.round((price / MRP) * 100))) > 5 && (
+                <>
+                {100 - (Math.round((price / MRP) * 100))}%
+                </>
+              )}
+
+               </span></div>
             </div>
           )}
 

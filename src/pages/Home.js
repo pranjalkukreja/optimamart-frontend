@@ -84,7 +84,7 @@ const Home = () => {
               </div>
             </div>
           ) : (
-
+              
               <div className="margin-bottom--one pdl-generic-content_container--max">
 
                 <div className="pdl-carousel_item _carousel-item" style={{ height: '26rem', width: '100%', textAlign: 'center' }}>
@@ -120,6 +120,7 @@ const Home = () => {
         </div>
 
         <div>
+          <Link to="/shop/biscuits-snacks-and-chocolates">
           {isTabletOrMobile ? (
             <div className="margin-bottom--one pdl-generic-content_container--max">
               <div tabIndex={-1} className="pdl-carousel_item _carousel-item" style={{ margin: '10 10 10 0', width: '100%'}}>
@@ -183,15 +184,15 @@ const Home = () => {
               </div>
 
             )}
-
-
+          </Link>
         </div>
 
 
 
         
         <div>
-        {isTabletOrMobile ? (
+          <Link to="/shop/non-veg.">
+          {isTabletOrMobile ? (
             <div className="margin-bottom--one pdl-generic-content_container--max">
               <div tabIndex={-1} className="pdl-carousel_item _carousel-item" style={{ margin: '10 10 10 0', width: '100%'}}>
                 <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
@@ -254,10 +255,13 @@ const Home = () => {
               </div>
 
             )}
+          </Link>
+        
         </div>
 
         <div>
-        {isTabletOrMobile ? (
+          <Link to="/shop/beverages"> 
+          {isTabletOrMobile ? (
             <div className="margin-bottom--one pdl-generic-content_container--max">
               <div tabIndex={-1} className="pdl-carousel_item _carousel-item" style={{ margin: '10 10 10 0', width: '100%'}}>
                 <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
@@ -320,6 +324,7 @@ const Home = () => {
               </div>
 
             )}
+          </Link>
         </div>
 
         <div>

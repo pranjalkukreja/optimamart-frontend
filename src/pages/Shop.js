@@ -389,8 +389,8 @@ const Shop = () => {
                   <div className="item-list-controls margin-bottom--two weekly-ad_list-controls">
 
                   </div>
-                  {!isNormalScreen ? (
-                    <ul className="tile-list tile-list--quint">
+                  {/* {!isNormalScreen ? (
+                    <ul className="tile-list tile-list--triple">
                       {products.map((product) => (
                         <ProductCard product={product} />
                       ))}
@@ -411,6 +411,46 @@ const Shop = () => {
                                 <ProductCard product={product} />
                               ))}
                             </ul>
+                          )}
+                      </>
+                    )} */}
+
+                  {isMobile ? (
+                    <ul className="tile-list tile-list--double">
+                      {products.map((product) => (
+                        <ProductCard product={product} />
+                      ))}
+                    </ul>
+                  ) : (
+                      <>
+                        {isTablet ? (
+                          <ul className="tile-list tile-list--triple">
+
+                            {products.map((product) => (
+                              <ProductCard product={product} />
+                            ))}
+                          </ul>
+                        ) : (
+                            <>
+                              {isNormalScreen ? (
+                                <ul className="tile-list tile-list--quad">
+
+                                  {products.map((product) => (
+                                    <ProductCard product={product} />
+                                  ))}
+                                </ul>
+                              ) : (
+                                  <>
+                                    <ul className="tile-list tile-list--quint">
+
+                                      {products.map((product) => (
+                                        <ProductCard product={product} />
+                                      ))}
+                                    </ul>
+                                  </>
+                                )}
+
+                            </>
                           )}
                       </>
                     )}

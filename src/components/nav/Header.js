@@ -36,6 +36,7 @@ import { getCategories } from "../../functions/category";
 import laptop from "../../images/laptop.png";
 import { Divider } from 'antd';
 import disableScroll from 'disable-scroll';
+import Headroom from 'react-headroom'
 
 
 
@@ -159,6 +160,7 @@ const Header = () => {
 
   return (
     <div className="">
+      <Headroom>
       <header className="global-header global-header-mobile">
         <nav aria-label="Main" className="global-header_nav global-header_nav--main spyglass-nav-group_wrapper">
 
@@ -282,13 +284,14 @@ const Header = () => {
 
 
 
-
-          <div className="global-header_logo-container">
+                <div className="global-header_logo-container">
             <a id="brand-logo_link" href="/" aria-label="Home">
               <div className="vector-icon-sns-logo">
                 <img src={logo} alt="Logo" />
               </div>
             </a></div>
+
+ 
           {/**/}
           <div className="global-header_dropdown-container">
             <ul aria-label="Main" className="global-header_list visible-above-1200">
@@ -429,7 +432,7 @@ const Header = () => {
 
       </div>
 
-
+      </Headroom>
     </div>
 
   );
