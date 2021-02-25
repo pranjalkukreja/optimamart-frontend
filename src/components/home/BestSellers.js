@@ -37,10 +37,10 @@ const BestSellers = () => {
         <div className="product-view product-view-search">
           <div className="product-set spyglass-nav-group_wrapper">
             <div>
-              <div aria-labelledby="zone-heading-16141913796711082" className="zone-block zone-block-xlarge" has-shopping-list-menu="true">
+              <div  className="zone-block zone-block-xlarge" has-shopping-list-menu="true">
                 <div className="zone-block_content">
                   <div className="zone-block_header">
-                    <h2 id="zone-heading-16141913796711082" className="zone-block_title"> New Arrivals </h2>
+                    <h2 id="zone-heading-16141913796711082" className="zone-block_title"> Best Sellers </h2>
                     <Link to="/shop">
                       <button aria-label="View all products" className="zone-block_link zone-block_link--zone-carousel">
 
