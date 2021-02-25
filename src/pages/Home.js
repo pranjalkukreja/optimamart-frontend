@@ -89,7 +89,7 @@ const Home = () => {
 
                 <div className="pdl-carousel_item _carousel-item" style={{ height: '26rem', width: '100%', textAlign: 'center' }}>
                   <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
-                    {/**/}
+                    {/* {/`url(${image_url})`/} */}
                     <div className="kwm-tile kwm-colors--primary link-pointer">
                       <div className="kwm-tile_image-container" style={{ backgroundImage: 'url("https://i5.peapod.com/c/O1/O1TV9.jpg")' }}>
                         <div className="kwm-message_container kwm-message_container--right">
@@ -330,7 +330,7 @@ const Home = () => {
                 <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
                   {/**/}
                   <div className="kwm-tile kwm-colors--primary link-pointer">
-                    <div className="kwm-tile_image-container" style={{ backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/ashillc-housing.appspot.com/o/OMPICS%2FFrozen.jpg?alt=media&token=d912e01d-0d6d-476a-98ec-9ca1c62e1ff8")' }}>
+                    <div className="kwm-tile_image-container" style={{ backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/ashillc-housing.appspot.com/o/OMPICS%2FBeverages-1.jpg?alt=media&token=502085ce-dcdf-4bdf-a821-52e390362735")' }}>
                       {/**/}
                       <div>
                         <div className="kwm-message-mobile">

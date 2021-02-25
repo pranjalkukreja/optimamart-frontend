@@ -88,7 +88,7 @@ const ProductCard = ({ product }) => {
         <div className="product-tile_content">
           {price < MRP && (
             <div>
-              <div className="flag_outer-container"><span className="flag_label flag_label--tomato"> Sale {Math.round((price / MRP) * 100)}% </span></div>
+              <div className="flag_outer-container"><span className="flag_label flag_label--tomato"> Sale {100 - (Math.round((price / MRP) * 100))}% </span></div>
             </div>
           )}
 
@@ -115,7 +115,7 @@ const ProductCard = ({ product }) => {
                   <div data-v-12a9e0ca role="link" tabIndex={0} className="product-grid-cell_name">
 
                     <h3 data-v-12a9e0ca aria-label="Tilapia Fillets Boneless Fresh" className="product-grid-cell_name-text product-grid-cell_name-text--small product-grid-cell_name-text--clamp-2">
-                      {brand.name == 'Optima Mart' ? (
+                      {brand.name == 'OPTIMA' ? (
                       <span data-v-12a9e0ca className="vector-icon_inline-text--left">
                       <div data-v-12a9e0ca className="vector-icon-size--xsmall">
                         <img src={OMF} alt=""/>
@@ -123,7 +123,7 @@ const ProductCard = ({ product }) => {
                     </span>
 
                       ) : (
-                        <h1>no</h1>
+                        <h1></h1>
                       )}
 
                       {title}
