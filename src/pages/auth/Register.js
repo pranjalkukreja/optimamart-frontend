@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { auth } from "../../firebase";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 
 const Register = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -54,6 +56,12 @@ const Register = ({ history }) => {
         <div className="col-md-6 offset-md-3">
           <h4>Register</h4>
           {registerForm()}
+
+          <div className="text-center border--top">
+            <Link to="/login" className="button button--link button--second button-width--full">
+              Sign In 
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -10,6 +10,10 @@ import {
 } from "../functions/user";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { Link } from "react-router-dom";
+import BlackNavigation from "../components/BlackNavigation/BlackNavigation";
+import { Button } from "antd";
+
 
 const Checkout = ({ history }) => {
   const [products, setProducts] = useState([]);
@@ -89,10 +93,42 @@ const Checkout = ({ history }) => {
 
   const showAddress = () => (
     <>
-      <ReactQuill theme="snow" value={address} onChange={setAddress} />
+      <div className="ml-5">{/**/} <div className="pdl-checkout_block"><div><h3 className="pdl-checkout_heading">
+        Delivery Address </h3>
+        {user.address ? (
+          <div title="Delivery Address"><p>
+            {user.name}
+            {user.lastName}<br />
+            {user.address}<br /> <span>
+              {user.unitAddress}<br /></span>
+            {user.cityAddress}
+            {user.StateAddress} {user.ZipAddress}
+          </p> <p>
+              {user.PhoneNumber}
+              {/**/}</p></div>
+        ) : (
+            <>
+              <h1>Please update your Address</h1>
+            </>
+          )}
+      </div>
+        <Link to="/user/dashboard">
+          {user.address ? (
+            <button aria-label="Change Delivery Address" className="button button--fourth button-width--med">
+              Change
+            </button>
+          ) : (
+              <button aria-label="Change Delivery Address" className="button button--fourth button-width--med">
+                Add Address
+              </button>
+            )}
+        </Link>
+
+      </div></div>
+      {/* <ReactQuill theme="snow" value={address} onChange={setAddress} />
       <button className="btn btn-primary mt-2" onClick={saveAddressToDb}>
         Save
-      </button>
+      </button> */}
     </>
   );
 
@@ -115,11 +151,11 @@ const Checkout = ({ history }) => {
         }}
         value={coupon}
         type="text"
-        className="form-control"
+        className="form-control ml-5"
       />
-      <button onClick={applyDiscountCoupon} className="btn btn-primary mt-2">
+      <Button onClick={applyDiscountCoupon} disabled={!coupon} className="button button--prime button button--second button-width--small mt-2 ml-5">
         Apply
-      </button>
+      </Button>
     </>
   );
 
@@ -156,68 +192,69 @@ const Checkout = ({ history }) => {
   };
 
   return (
-    <div className="row">
-      <div className="col-md-6">
-        <h4>Delivery Address</h4>
-        <br />
-        <br />
-        {showAddress()}
-        <hr />
-        <h4>Got Coupon?</h4>
-        <br />
-        {showApplyCoupon()}
-        <br />
-        {discountError && <p className="bg-danger p-2">{discountError}</p>}
-      </div>
+    <>
+      <BlackNavigation title="Please enter your details" />
 
-      <div className="col-md-6">
-        <h4>Order Summary</h4>
-        <hr />
-        <p>Products {products.length}</p>
-        <hr />
-        {showProductSummary()}
-        <hr />
-        <p>Cart Total: {total}</p>
+      <div className="row">
+        <div className="col-md-6">
+          <br />
+          {showAddress()}
+          <h4 className="ml-5">Got Coupon?</h4>
+          <br />
+          {showApplyCoupon()}
+          <br />
+          {discountError && <p className="bg-danger p-2">{discountError}</p>}
+        </div>
 
-        {totalAfterDiscount > 0 && (
-          <p className="bg-success p-2">
-            Discount Applied: Total Payable: ${totalAfterDiscount}
-          </p>
-        )}
+        <div className="col-md-6 mt-3">
+          <h4 >Order Summary</h4>
+          <hr />
+          <p>Products {products.length}</p>
+          <hr />
+          {showProductSummary()}
+          <hr />
+          <p>Cart Total: ₹{total}</p>
 
-        <div className="row">
-          <div className="col-md-6">
-            {COD ? (
+          {totalAfterDiscount > 0 && (
+            <p className="bg-success p-2">
+              Discount Applied: Total Payable: ₹{totalAfterDiscount}
+            </p>
+          )}
+
+          <div className="row">
+            <div className="col-md-6">
+              {COD ? (
+                <button
+                  className="btn btn-primary"
+                  disabled={!addressSaved || !products.length}
+                  onClick={createCashOrder}
+                >
+                  Place Order
+                </button>
+              ) : (
+                  <Button
+                    className="button button--prime button button--prime button-width--lg mt-2"
+                    disabled={!user.address || !products.length}
+                    onClick={() => history.push("/payment")}
+                  >
+                    Place Order
+                  </Button>
+                )}
+            </div>
+
+            <div className="col-md-6">
               <button
-                className="btn btn-primary"
-                disabled={!addressSaved || !products.length}
-                onClick={createCashOrder}
+                disabled={!products.length}
+                onClick={emptyCart}
+                className="button button--fourth button-width--med"
               >
-                Place Order
-              </button>
-            ) : (
-              <button
-                className="btn btn-primary"
-                disabled={!addressSaved || !products.length}
-                onClick={() => history.push("/payment")}
-              >
-                Place Order
-              </button>
-            )}
-          </div>
-
-          <div className="col-md-6">
-            <button
-              disabled={!products.length}
-              onClick={emptyCart}
-              className="btn btn-primary"
-            >
-              Empty Cart
+                Empty Cart
             </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

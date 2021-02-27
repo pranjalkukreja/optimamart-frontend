@@ -12,6 +12,7 @@ import {
 } from "../../functions/product";
 import laptop from "../../images/laptop.png";
 import ProductAisleCard from "../../components/cards/ProductAisleCard"
+import { useMediaQuery } from 'react-responsive'
 
 
 
@@ -26,6 +27,10 @@ const ProduceAisle = ({ match }) => {
 
     let dispatch = useDispatch();
     const { slug } = match.params;
+
+    const isTablet = useMediaQuery({ query: '(max-width: 900px)' })
+    const isNormalScreen = useMediaQuery({ query: '(max-width: 1200px' })
+    const isMobile = useMediaQuery({ query: '(max-width: 700px' })
 
 
     useEffect(() => {
@@ -92,7 +97,7 @@ const ProduceAisle = ({ match }) => {
                             title={
                                 <span className="h6">
                                     <DownSquareOutlined /> Sub Categories
-    </span>
+                                 </span>
                             }
                         >
                             <div style={{ maringTop: "-10px" }} className="pl-4 pr-4">
@@ -116,22 +121,93 @@ const ProduceAisle = ({ match }) => {
                 </div>
 
                 <div className="col-md-9 pt-2">
-                    {loading ? (
-                        <h4 className="text-danger">Loading...</h4>
-                    ) : (
-                            <h4 className="text-danger">Products</h4>
-                        )}
+                {loading ? (
+            <h4 className="text-danger">Loading...</h4>
+          ) : (
+              <h4 className="text-danger">Products</h4>
+            )}
 
-                    {products.length < 1 && <p>No products found</p>}
+          {products.length < 1 && <p>No products found</p>}
 
-                    <div className="row pb-5">
-                        {products.map((p) => (
-                            <div key={p._id} className="col-md-3 mt-4">
-                                <ProductCard product={p} />
-                            </div>
-                        ))}
-                    </div>
+          <div className="tabs-details">
+            <div id="panel-grid-view" role="tabpanel" aria-labelledby="grid-view">
+              <div>
+                <div className="generic-content_wrapper">
+                  <div className="item-list-controls margin-bottom--two weekly-ad_list-controls">
 
+                  </div>
+                  {/* {!isNormalScreen ? (
+                    <ul className="tile-list tile-list--triple">
+                      {products.map((product) => (
+                        <ProductCard product={product} />
+                      ))}
+                    </ul>
+                  ) : (
+                      <>
+                        {!isTablet ? (
+                          <ul className="tile-list tile-list--triple">
+
+                            {products.map((product) => (
+                              <ProductCard product={product} />
+                            ))}
+                          </ul>
+                        ) : (
+                            <ul className="tile-list tile-list--double">
+
+                              {products.map((product) => (
+                                <ProductCard product={product} />
+                              ))}
+                            </ul>
+                          )}
+                      </>
+                    )} */}
+
+                  {isMobile ? (
+                    <ul className="tile-list tile-list--double">
+                      {products.map((product) => (
+                        <ProductCard product={product} />
+                      ))}
+                    </ul>
+                  ) : (
+                      <>
+                        {isTablet ? (
+                          <ul className="tile-list tile-list--double">
+
+                            {products.map((product) => (
+                              <ProductCard product={product} />
+                            ))}
+                          </ul>
+                        ) : (
+                            <>
+                              {isNormalScreen ? (
+                                <ul className="tile-list tile-list--quad">
+
+                                  {products.map((product) => (
+                                    <ProductCard product={product} />
+                                  ))}
+                                </ul>
+                              ) : (
+                                  <>
+                                    <ul className="tile-list tile-list--quint">
+
+                                      {products.map((product) => (
+                                        <ProductCard product={product} />
+                                      ))}
+                                    </ul>
+                                  </>
+                                )}
+
+                            </>
+                          )}
+                      </>
+                    )}
+
+                </div>
+                {/* <div className="color-bar"><button className="button button--second button-width--lg"> Show More </button></div> */}
+              </div>
+            </div>
+            <div id="panel-print-view" role="tabpanel" aria-labelledby="print-view" aria-hidden="true" style={{ display: 'none' }} />
+          </div>
 
                 </div>
             </div>

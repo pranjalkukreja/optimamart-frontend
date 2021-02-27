@@ -57,6 +57,12 @@ const AdminNav = () => (
           Password
         </Link>
       </li>
+
+      <li className="nav-item">
+        <Link to="/user/dashboard" className="nav-link">
+          User Dashboard
+        </Link>
+      </li>
     </ul>
   </nav>
 );

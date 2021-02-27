@@ -106,7 +106,7 @@ const Header = () => {
     <Menu>
       {user && user.role === "subscriber" && (
         <Menu.Item>
-          <Link to="/user/history">Dashboard</Link>
+          <Link to="/user/dashboard">Dashboard</Link>
         </Menu.Item>
       )}
       {user && user.role === "admin" && (
@@ -321,9 +321,14 @@ const Header = () => {
                   {/**/}
                 </li>
               </Dropdown>
-              <Dropdown overlay={MyShopMenu}>
+              <li className="nav-item global-header_nav-item">
+              <button id="nav-my-shop" aria-haspopup="true" className="nav-item_button"> 
+              <a className="text-link" href="tel:+919811777782">+91-98111-61182</a>
+                  
+                </button>
+              </li>
+              {/* <Dropdown overlay={MyShopMenu}>
                 <li className="nav-item global-header_nav-item"><button id="nav-my-shop" aria-haspopup="true" className="nav-item_button"> My Shop
-            {/**/}
                   <div className="nav-item_caret">
                     <div className="vector-icon-size--medium vector-icon-stroke--prime"><svg xmlns="http://www.w3.org/2000/svg" aria-label="down arrow" viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" className>
                       <title lang="en">down arrow</title>
@@ -345,9 +350,8 @@ const Header = () => {
                     </svg></div>
                   </div>
                 </button>
-                  {/**/}
                 </li>
-              </Dropdown>
+              </Dropdown> */}
             </ul>
           </div>
           <div className="global-header_resizable-section">
@@ -401,35 +405,7 @@ const Header = () => {
 
 
 
-      <div className="global-header-base_scroll-section">
-        <div className="header-nav_wrapper">
-          <nav aria-label="secondary" className="global-header_nav global-header_nav--sub spyglass-nav-group_wrapper">
-            <ul aria-label="secondary" className="global-header_list">
-              <li className="nav-item"><a id="nav-coupons" href="#" className="nav-item_link"> Coupons </a>
-                {/**/}
-              </li>
-              <li className="nav-item"><a id="nav-weekly-ad" href="#" className="nav-item_link"> Weekly Ad </a>
-                {/**/}
-              </li>
-              <li className="nav-item"><a id="nav-recipes" href="/shop" target="_blank" className="nav-item_link"> Shop Now </a>
-                {/**/}
-              </li>
-              {/* <li className="nav-item"><a id="nav-go-rewards" href="#" className="nav-item_link"> GO Rewards </a>
-        </li>
-        <li className="nav-item"><a id="nav-past-purchases" href="#" className="nav-item_link"> Past Purchases </a>
-        </li>
-        <li className="nav-item"><a id="nav-pharmacy" href="#" className="nav-item_link"> Pharmacy </a>
-        </li>
-        <li className="nav-item"><a id="nav-wellness" href="#" className="nav-item_link"> Wellness </a>
-        </li> */}
-            </ul>
-            <div className="subnav-shopping-mode"><a href="#" className="subnav-shopping-mode_element robot-shopping-mode-type"><strong className="highlighted-text">In-Store</strong></a><span className="subnav-shopping-mode_element">at</span><a href="#" className="subnav-shopping-mode_element robot-shopping-mode-location"><strong className="highlighted-text">12/26 Rajouri Garden</strong></a><span className="subnav-shopping-mode_element">|</span>
-              {/**/}<a href="#" className="subnav-shopping-mode_element robot-shopping-mode-slot"><strong className="highlighted-text">Try Pickup/Delivery</strong></a></div>
-            {/**/}
-          </nav>
-        </div>
 
-      </div>
     </div>
 
   );

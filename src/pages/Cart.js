@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ProductCardInCheckout from "../components/cards/ProductCardInCheckout";
 import { userCart } from "../functions/user";
+import BlackNavigation from "../components/BlackNavigation/BlackNavigation";
 
 const Cart = ({ history }) => {
   const { cart, user } = useSelector((state) => ({ ...state }));
@@ -58,10 +59,12 @@ const Cart = ({ history }) => {
   );
 
   return (
+    <>
+    <BlackNavigation title={"Cart /" + " " + cart.length + " " + "Product"} />
+
     <div className="container-fluid pt-2">
       <div className="row">
         <div className="col-md-8">
-          <h4>Cart / {cart.length} Product</h4>
 
           {!cart.length ? (
             <p>
@@ -139,7 +142,9 @@ const Cart = ({ history }) => {
         </div>
       </div>
     </div>
+    </>
   );
+
 };
 
 export default Cart;

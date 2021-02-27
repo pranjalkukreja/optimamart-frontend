@@ -107,7 +107,7 @@ const NewCustomer = () => {
                       </div>
                       <div className>
                         <div className="large-tile_container spyglass-nav-group_wrapper">
-                          <div className="large-tile"><img src="https://i5.peapod.com/c/9P/9POVR.jpg" alt="Stop & Shop delivery truck" className="large-tile_image" />
+                          <div className="large-tile"><img src="https://firebasestorage.googleapis.com/v0/b/ashillc-housing.appspot.com/o/OMPICS%2FDelivery%20Banner%201200x640.jpg?alt=media&token=bf609299-d1bb-43c2-81d8-34074a345b36" alt="Stop & Shop delivery truck" className="large-tile_image" />
                             <div className="large-tile_content">
                               <h2 className="h6-bold large-tile_text-block">Value and convenience</h2>
                               <div className="large-tile_description">

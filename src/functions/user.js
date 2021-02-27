@@ -36,7 +36,83 @@ export const saveUserAddress = async (authtoken, address) =>
     }
   );
 
-  
+  export const saveUserName = async (authtoken, name) => 
+    await axios.post(
+      `${process.env.REACT_APP_API}/user/name`,
+      { name },
+      {
+        headers: {
+          authtoken,
+        },
+      }
+    )
+
+    export const saveUserLastName = async (authtoken, lastName) => 
+    await axios.post(
+      `${process.env.REACT_APP_API}/user/last-name`,
+      { lastName },
+      {
+        headers: {
+          authtoken,
+        },
+      }
+    )
+
+    export const saveUserUnitAddress = async (authtoken, unitAddress) => 
+    await axios.post(
+      `${process.env.REACT_APP_API}/user/unit-address`,
+      { unitAddress },
+      {
+        headers: {
+          authtoken,
+        },
+      }
+    )
+
+    export const saveUserCityAddress = async (authtoken, cityAddress) => 
+    await axios.post(
+      `${process.env.REACT_APP_API}/user/city-address`,
+      { cityAddress },
+      {
+        headers: {
+          authtoken,
+        },
+      }
+    )
+
+    export const saveUserStateAddress = async (authtoken, StateAddress) => 
+    await axios.post(
+      `${process.env.REACT_APP_API}/user/state-address`,
+      { StateAddress },
+      {
+        headers: {
+          authtoken,
+        },
+      }
+    )
+
+    export const saveUserZipAddress = async (authtoken, ZipAddress) => 
+    await axios.post(
+      `${process.env.REACT_APP_API}/user/zip-address`,
+      { ZipAddress },
+      {
+        headers: {
+          authtoken,
+        },
+      }
+    )
+
+    export const saveUserPhoneNumber = async (authtoken, PhoneNumber) => 
+    await axios.post(
+      `${process.env.REACT_APP_API}/user/phone-number`,
+      { PhoneNumber },
+      {
+        headers: {
+          authtoken,
+        },
+      }
+    )
+
 
 export const applyCoupon = async (authtoken, coupon) =>
   await axios.post(

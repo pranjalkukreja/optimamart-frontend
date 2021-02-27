@@ -12,6 +12,7 @@ import fourth from "../images/fourth.jpg"
 import fifth from "../images/fifth.jpg"
 import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
+import HomeCategory from "../components/home/HomeCategory";
 
 
 
@@ -41,7 +42,7 @@ const Home = () => {
     <>
     
       <div className="jumbotron button--shop-now h1 font-weight-bold text-center">
-        <Jumbotron text={["Welcome to Optima Mart", "Fresh Groceries", "Unbeatable Prices", "Best Sellers"]} />
+        <Jumbotron text={["Welcome to Optima Mart", "Fresh Groceries", "Unbeatable Prices", "Free Home Delivery"]} />
       </div>
 
       
@@ -118,6 +119,79 @@ const Home = () => {
         </Link>
 
         </div>
+
+        <div>
+        <Link to="/shop">
+        <div>
+          {isTabletOrMobile ? (
+            <div className="margin-bottom--one pdl-generic-content_container--max">
+              <div tabIndex={-1} className="pdl-carousel_item _carousel-item" style={{ margin: '10 10 10 0', width: '100%'}}>
+                <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
+                  {/**/}
+                  <div className="kwm-tile kwm-colors--primary link-pointer">
+                    <div className="kwm-tile_image-container" style={{ backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/ashillc-housing.appspot.com/o/OMPICS%2FDelivery%20Banner%201200x640.jpg?alt=media&token=bf609299-d1bb-43c2-81d8-34074a345b36' }}>
+                      {/**/}
+                      <div>
+                        <div className="kwm-message-mobile">
+                          <div><span className="kwm-message-mobile_headline">Free Home Delivery!!</span><span className="kwm-message-mobile_bodycopy">Just pay for your things!</span></div>
+                          <div className="kwm-message-mobile_carot-icon">
+                            <div className="vector-icon-size--medium"><svg xmlns="http://www.w3.org/2000/svg" aria-label="right arrow" viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" className>
+                              <title lang="en">right arrow</title>
+                              <desc />
+                              <g fill stroke>
+                                <polyline fill="none" strokeLinecap="square" strokeWidth={2} points="13.2425 7.7575 21.728 16.2425 13.2425 24.728" />
+                              </g>
+                            </svg></div>
+                          </div>
+                        </div>
+                        {/**/}
+                      </div>
+                    </div>
+                  </div>
+                  {/**/}
+                  {/**/}
+                </div>
+                {/**/}
+                {/**/}
+              </div>
+            </div>
+          ) : (
+              
+              <div className="margin-bottom--one pdl-generic-content_container--max">
+
+                <div className="pdl-carousel_item _carousel-item" style={{ height: '26rem', width: '100%', textAlign: 'center' }}>
+                  <div className="kwm-tile_spyglass spyglass-nav-group_wrapper">
+                    {/* {/`url(${image_url})`/} */}
+                    <div className="kwm-tile kwm-colors--primary link-pointer">
+                      <div className="kwm-tile_image-container" style={{ backgroundImage: 'url("https://firebasestorage.googleapis.com/v0/b/ashillc-housing.appspot.com/o/OMPICS%2FDelivery%20Banner%202400x500.jpg?alt=media&token=e996b88c-6189-4ed4-9c98-76cd388987d9")' }}>
+                        <div className="kwm-message_container kwm-message_container--center">
+                          <div className="kwm-message_content">
+                            <div className="kwm-message">
+                              <div className="kwm-message_headline kwm-message_headline--small">Free Home Delivery!!</div>
+                              <div className="kwm-message_bodycopy">Just pay for your things!</div>
+                              <div className="kwm-message_btn-container"><button className="btn kwm-message_btn kwm-message_btn--flat"><span>Shop Now</span></button></div>
+                              {/**/}
+                            </div>
+                          </div>
+                        </div>
+                        {/**/}
+                      </div>
+                    </div>
+                    {/**/}
+                    {/**/}
+                  </div>
+                  {/**/}
+                  {/**/}
+                </div>
+              </div>
+
+            )}
+        </div>
+        </Link>
+
+        </div>
+
+
 
         <div>
           <Link to="/shop/biscuits-snacks-and-chocolates">
@@ -399,6 +473,9 @@ const Home = () => {
 
       <Divider />
 
+      <HomeCategory />
+
+      <Divider />
 
       <NewArrivals />
 
