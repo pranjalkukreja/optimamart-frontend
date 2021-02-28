@@ -52,7 +52,12 @@ const ProductUpdateForm = ({
     color,
     brand,
     ShelfLife,
-    originCountry
+    originCountry,
+    weight,
+    calories,
+    satfat,
+    sodium,
+    sugar
   } = values;
 
   return (
@@ -125,6 +130,58 @@ const ProductUpdateForm = ({
           onChange={handleChange}
         />
       </div>
+
+      <div className="form-group">
+        <label>Weight</label>
+        <input
+          type="string"
+          name="weight"
+          value={weight}
+          className="form-control"
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="form-group">
+        <label>calories</label>
+        <input
+          type="string"
+          name="calories"
+          className="form-control"
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="form-group">
+        <label>satfat</label>
+        <input
+          type="string"
+          name="satfat"
+          className="form-control"
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="form-group">
+        <label>sodium</label>
+        <input
+          type="string"
+          name="sodium"
+          className="form-control"
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="form-group">
+        <label>sugar</label>
+        <input
+          type="string"
+          name="sugar"
+          className="form-control"
+          onChange={handleChange}
+        />
+      </div>
+
 
       <div className="form-group">
         <label>Country of Origin</label>

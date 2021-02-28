@@ -19,6 +19,7 @@ const initialState = {
   images: [],
   MRP: "",
   brand: "",
+  weight: "",
 };
 
 const ProductUpdate = ({ match, history }) => {
