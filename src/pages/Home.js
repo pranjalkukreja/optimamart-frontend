@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Jumbotron from "../components/cards/Jumbotron";
 import NewArrivals from "../components/home/NewArrivals";
 import BestSellers from "../components/home/BestSellers";
@@ -13,6 +13,7 @@ import fifth from "../images/fifth.jpg"
 import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
 import HomeCategory from "../components/home/HomeCategory";
+import { getCategories } from "../functions/category";
 
 
 
@@ -22,6 +23,16 @@ const Home = () => {
   function onChange(a, b, c) {
     console.log(a, b, c);
   }
+
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState("");
+
+  useEffect(() => {
+    loadCategories();
+  }, []);
+
+  const loadCategories = () =>
+    getCategories().then((c) => setCategories(c.data));
 
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 850px)' })
 
@@ -194,7 +205,7 @@ const Home = () => {
 
 
         <div>
-          <Link to="/shop/biscuits-snacks-and-chocolates">
+          <Link>
           {isTabletOrMobile ? (
             <div className="margin-bottom--one pdl-generic-content_container--max">
               <div tabIndex={-1} className="pdl-carousel_item _carousel-item" style={{ margin: '10 10 10 0', width: '100%'}}>
@@ -265,7 +276,7 @@ const Home = () => {
 
         
         <div>
-          <Link to="/shop/non-veg.">
+          <Link to="/shop/meat">
           {isTabletOrMobile ? (
             <div className="margin-bottom--one pdl-generic-content_container--max">
               <div tabIndex={-1} className="pdl-carousel_item _carousel-item" style={{ margin: '10 10 10 0', width: '100%'}}>

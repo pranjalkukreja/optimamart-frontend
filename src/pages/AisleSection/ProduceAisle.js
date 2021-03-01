@@ -75,6 +75,20 @@ const ProduceAisle = ({ match }) => {
             </div>
         ));
 
+        const CategoryName = () => (
+          <>
+          {category ? (
+            <>
+              {category}
+            </>
+          ) : (
+            <>
+              "Shop"
+            </>
+          )}
+          </>
+        )
+
     return (
         <div className="container-fluid">
             <BlackNavigation title={category.name} />

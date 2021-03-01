@@ -167,15 +167,6 @@ const ProductCreateForm = ({
         />
       </div>
 
-      <div className="form-group">
-        <label>Weight</label>
-        <input
-          type="string"
-          name="weight"
-          className="form-control"
-          onChange={handleChange}
-        />
-      </div>
 
       <div className="form-group">
         <label>calories</label>

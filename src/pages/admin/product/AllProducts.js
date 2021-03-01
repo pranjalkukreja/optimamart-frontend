@@ -5,10 +5,14 @@ import AdminProductCard from "../../../components/cards/AdminProductCard";
 import { removeProduct } from "../../../functions/product";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import LocalSearch from "../../../components/forms/LocalSearch";
+
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [keyword, setKeyword] = useState("");
+
   // redux
   const { user } = useSelector((state) => ({ ...state }));
 
@@ -18,7 +22,7 @@ const AllProducts = () => {
 
   const loadAllProducts = () => {
     setLoading(true);
-    getProductsByCount(100)
+    getProductsByCount()
       .then((res) => {
         setProducts(res.data);
         setLoading(false);
@@ -28,6 +32,9 @@ const AllProducts = () => {
         console.log(err);
       });
   };
+
+  const searched = (keyword) => (c) => c.title.toLowerCase().includes(keyword);
+
 
   const handleRemove = (slug) => {
     // let answer = window.confirm("Delete?");
@@ -56,10 +63,13 @@ const AllProducts = () => {
           {loading ? (
             <h4 className="text-danger">Loading...</h4>
           ) : (
-          <h4>All Products {products.length}</h4>
-          )}
+              <h4>All Products {products.length}</h4>
+            )}
+
+          <LocalSearch keyword={keyword} setKeyword={setKeyword} />
+
           <div className="row">
-            {products.map((product) => (
+            {products.filter(searched(keyword)).map((product) => (
               <div key={product._id} className="col-md-4 pb-3">
                 <AdminProductCard
                   product={product}
