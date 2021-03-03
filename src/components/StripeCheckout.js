@@ -8,7 +8,6 @@ import { DollarOutlined, CheckOutlined, SwapOutlined } from "@ant-design/icons";
 import Laptop from "../images/laptop.png";
 import { createOrder, emptyUserCart } from "../functions/user";
 import emailjs from 'emailjs-com';
-import { Button } from "antd";
 
 
 const StripeCheckout = ({ history }) => {
@@ -160,14 +159,14 @@ const StripeCheckout = ({ history }) => {
           options={cartStyle}
           onChange={handleChange}
         />
-        <Button
-          className="stripe-button btn button--prime"
+        <button
+          className="stripe-button button btn button--prime"
           disabled={processing || disabled || succeeded}
         >
           <span id="button-text">
             {processing ? <div className="spinner" id="spinner"></div> : "Pay"}
           </span>
-        </Button>
+        </button>
         <br />
         {error && (
           <div className="card-error" role="alert">

@@ -5,7 +5,7 @@ import StripeCheckout from "../components/StripeCheckout";
 // import "stripe.css";
 
 // load stripe outside of components render to avoid recreating stripe object on every render
-const promise = loadStripe(process.env.REACT_APP_STRIPE_KEY);
+const promise = loadStripe("pk_live_51IQVuXJf4S25f3JI4wijSYjUmantm5SZwcg6FrwedvHOP3khKS1GtL8zgUjW0ucalH06RWDnQBrzOF83SwsI7h9Q00RF6yHxES");
 
 const Payment = () => {
   return (
