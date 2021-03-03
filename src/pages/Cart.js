@@ -90,7 +90,7 @@ const Cart = ({ history }) => {
           <hr />
           {user ? (
             <>
-            {getTotal() > 100 ? (
+            {getTotal() > 500 ? (
                            <button
                            onClick={saveOrderToDb}
                            className="button cart-modal_button button--third button-width--full btn-primary"
