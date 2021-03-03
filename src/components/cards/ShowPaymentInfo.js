@@ -9,7 +9,7 @@ const ShowPaymentInfo = ({ order, showStatus = true }) => (
         Amount:{" / "}
         {(order.paymentIntent.amount /= 100).toLocaleString("en-US", {
           style: "currency",
-          currency: "USD",
+          currency: "INR",
         })}
       </span>
       {" / "}

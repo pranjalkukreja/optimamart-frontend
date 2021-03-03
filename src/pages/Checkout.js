@@ -88,7 +88,6 @@ const Checkout = ({ history }) => {
           payload: false,
         });
         toast.error("Sorry! There is no coupon like that")
-
       }
     });
   };
@@ -279,7 +278,7 @@ const Checkout = ({ history }) => {
                               {COD ? (
                                 <button
                                   className="button btn button--prime"
-                                  disabled={!addressSaved || !products.length}
+                                  disabled={!user.address || !products.length}
                                   onClick={createCashOrder}
                                 >
                                   Place Order
@@ -290,7 +289,7 @@ const Checkout = ({ history }) => {
                                     disabled={!user.address || !products.length}
                                     onClick={() => history.push("/payment")}
                                   >
-                                    Place Order
+                                    Pay for your order
                                   </Button>
                                 )}
 

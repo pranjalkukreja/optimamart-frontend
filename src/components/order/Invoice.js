@@ -15,7 +15,7 @@ const Invoice = ({ order }) => (
         ~ {new Date().toLocaleString()} ~
       </Text>
       <Text style={styles.title}>Order Invoice</Text>
-      <Text style={styles.author}>React Redux Ecommerce</Text>
+      <Text style={styles.author}>Optima Mart</Text>
       <Text style={styles.subtitle}>Order Summary</Text>
 
       <Table>
@@ -31,10 +31,9 @@ const Invoice = ({ order }) => (
       <Table data={order.products}>
         <TableBody>
           <DataTableCell getContent={(x) => x.product.title} />
-          <DataTableCell getContent={(x) => `$${x.product.price}`} />
+          <DataTableCell getContent={(x) => "₹" + x.product.price} />
           <DataTableCell getContent={(x) => x.count} />
-          <DataTableCell getContent={(x) => x.product.brand} />
-          <DataTableCell getContent={(x) => x.product.color} />
+          <DataTableCell getContent={(x) => x.product.brand.name} />
         </TableBody>
       </Table>
 

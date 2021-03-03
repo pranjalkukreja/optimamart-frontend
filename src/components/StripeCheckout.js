@@ -2,13 +2,17 @@ import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useSelector, useDispatch } from "react-redux";
 import { createPaymentIntent } from "../functions/stripe";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Card } from "antd";
 import { DollarOutlined, CheckOutlined, SwapOutlined } from "@ant-design/icons";
 import Laptop from "../images/laptop.png";
 import { createOrder, emptyUserCart } from "../functions/user";
+import emailjs from 'emailjs-com';
+
 
 const StripeCheckout = ({ history }) => {
+  const history1 = useHistory();
+
   const dispatch = useDispatch();
   const { user, coupon } = useSelector((state) => ({ ...state }));
 
@@ -78,6 +82,13 @@ const StripeCheckout = ({ history }) => {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
+      // history1.push('/');
+      emailjs.sendForm('gmail', 'template_d3ybduj', e.target, 'user_1FbCneze2Ijh5xBQ1ARJQ')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
     }
   };
 
@@ -131,11 +142,11 @@ const StripeCheckout = ({ history }) => {
           }
           actions={[
             <>
-              <DollarOutlined className="text-info" /> <br /> Total: $
+              <DollarOutlined className="text-info" /> <br /> Total: ₹
               {cartTotal}
             </>,
             <>
-              <CheckOutlined className="text-info" /> <br /> Total payable : $
+              <CheckOutlined className="text-info" /> <br /> Total payable : ₹
               {(payable / 100).toFixed(2)}
             </>,
           ]}
@@ -163,10 +174,13 @@ const StripeCheckout = ({ history }) => {
           </div>
         )}
         <br />
-        <p className={succeeded ? "result-message" : "result-message hidden"}>
-          Payment Successful.{" "}
-          <Link to="/user/history">See it in your purchase history.</Link>
-        </p>
+        {succeeded && (
+        <p className="result-message hidden">
+        Payment Successful. You will get a confirmation link soon {" "}
+        <Link to="/user/history">See it in your purchase history.</Link>
+      </p>
+        )}
+
       </form>
     </>
   );

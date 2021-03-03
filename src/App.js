@@ -54,6 +54,7 @@ const UserRoute = lazy(() => import("./components/routes/UserRoute"));
 const AdminRoute = lazy(() => import("./components/routes/AdminRoute"));
 const Password = lazy(() => import("./pages/user/Password"));
 const Wishlist = lazy(() => import("./pages/user/Wishlist"));
+const Confirmation = lazy(() => import("./pages/Confirmation"))
 const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
 const CategoryCreate = lazy(() =>
   import("./pages/admin/category/CategoryCreate")
@@ -173,6 +174,7 @@ const App = () => {
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/cart" component={Cart} />
         <UserRoute exact path="/checkout" component={Checkout} />
+        <Route exact path="/order/confirmation" component={Confirmation} />
         <AdminRoute exact path="/admin/coupon" component={CreateCouponPage} />
         <UserRoute exact path="/payment" component={Payment} />
         <Route exact path="/shop/:slug" component={ProduceAisle} />
