@@ -104,12 +104,13 @@ const ProductCardInCheckout = ({ p }) => {
         </td>
         <td>{p.title}</td>
         <td>₹{p.price}</td>
+        
 
         <td className="text-center">
           <input
             type="number"
             className="form-control"
-            value={p.count}
+            defaultValue={p.count}
             onChange={handleQuantityChange}
           />
         </td>
