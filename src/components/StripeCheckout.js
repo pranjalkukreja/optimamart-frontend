@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Card } from "antd";
 import { DollarOutlined, CheckOutlined, SwapOutlined } from "@ant-design/icons";
 import Laptop from "../images/laptop.png";
+import grocery from "../images/grocery.jpg";
 import { createOrder, emptyUserCart } from "../functions/user";
 import emailjs from 'emailjs-com';
 
@@ -132,7 +133,7 @@ const StripeCheckout = ({ history }) => {
         <Card
           cover={
             <img
-              src={Laptop}
+             src={grocery}
               style={{
                 height: "200px",
                 objectFit: "cover",

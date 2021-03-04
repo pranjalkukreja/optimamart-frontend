@@ -22,8 +22,8 @@ const NewCustomer = () => {
                               <div className="kwm-message_container kwm-message_container--right">
                                 <div className="kwm-message_content">
                                   <div className="kwm-message">
-                                    <div className="kwm-message_headline kwm-message_headline--small">Save ₹2500 and free delivery for 60 days*</div>
-                                    <div className="kwm-message_bodycopy">Enter promo code OMONLINE2500 at checkout</div>
+                                    <div className="kwm-message_headline kwm-message_headline--small">Save 10%</div>
+                                    <div className="kwm-message_bodycopy">Enter promo code NEWOPTIMA at checkout</div>
                                     <div className="kwm-message_btn-container"><button className="btn kwm-message_btn kwm-message_btn--flat"><span>See Details</span></button></div>
                                   </div>
                                 </div>
@@ -148,7 +148,7 @@ const NewCustomer = () => {
                                   </tbody>
                                 </table>
                                 <p />
-                                <p>Minimum Order Size: ₹200.00</p>
+                                <p>Minimum Order Size: 500.00</p>
                               </div>
                             </div>
                             <div className="copy-block_cta"><button className="btn btn--primary button-width--flex"> Select a Delivery Time </button></div>
