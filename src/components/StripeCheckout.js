@@ -122,7 +122,7 @@ const StripeCheckout = ({ history }) => {
       {!succeeded && (
         <div>
           {coupon && totalAfterDiscount !== undefined ? (
-            <p className="alert alert-success">{`Total after discount: $${totalAfterDiscount}`}</p>
+            <p className="alert alert-success">{`Total after discount: ₹${totalAfterDiscount}`}</p>
           ) : (
             <p className="alert alert-danger">No coupon applied</p>
           )}
