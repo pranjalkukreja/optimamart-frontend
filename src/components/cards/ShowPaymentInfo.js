@@ -24,12 +24,17 @@ const ShowPaymentInfo = ({ order, showStatus = true }) => (
         {new Date(order.paymentIntent.created * 1000).toLocaleString()}
       </span>
       {" / "}
+      <span>
+        Customer: {order.orderdName}, {order.orderdAddress}, {order.orderdUnit}, {order.orderdZip}, {order.orderdNumber}
+      </span>
+      {" / "}
       <br />
       {showStatus && (
-        <span className="badge bg-primary text-white">
+        <span className="text-white">
           STATUS: {order.orderStatus}
         </span>
       )}
+      
     </p>
   </div>
 );

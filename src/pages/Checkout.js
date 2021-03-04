@@ -13,6 +13,7 @@ import "react-quill/dist/quill.snow.css";
 import { Link } from "react-router-dom";
 import BlackNavigation from "../components/BlackNavigation/BlackNavigation";
 import { Button } from "antd";
+import emailjs from 'emailjs-com';
 
 
 const Checkout = ({ history }) => {
@@ -151,7 +152,7 @@ const Checkout = ({ history }) => {
     </>
   );
 
-  const createCashOrder = () => {
+  const createCashOrder = (e) => {
     createCashOrderForUser(user.token, COD, couponTrueOrFalse).then((res) => {
       console.log("USER CASH ORDER CREATED RES ", res);
       // empty cart form redux, local Storage, reset coupon, reset COD, redirect
@@ -180,6 +181,12 @@ const Checkout = ({ history }) => {
           history.push("/user/history");
         }, 1000);
       }
+      emailjs.sendForm('gmail', 'template_d3ybduj', e.target, 'user_1FbCneze2Ijh5xBQ1ARJQ')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
     });
   };
 
