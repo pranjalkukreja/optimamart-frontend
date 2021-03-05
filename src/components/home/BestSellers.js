@@ -5,14 +5,12 @@ import LoadingCard from "../cards/LoadingCard";
 import { Pagination } from "antd";
 import { Link } from "react-router-dom";
 
-
 const BestSellers = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [productsCount, setProductsCount] = useState(0);
   const [page, setPage] = useState(1);
   const [related, setRelated] = useState([]);
-
 
   useEffect(() => {
     loadAllProducts();

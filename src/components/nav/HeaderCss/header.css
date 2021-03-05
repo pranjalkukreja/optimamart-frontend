@@ -24638,7 +24638,7 @@ btn--mobile1 {
     position: relative
   }
   
-  .pdl-product-detail_image img {
+  .pdl-product-detail_image Image {
     max-height: 100%;
     max-width: 100%;
     position: absolute;

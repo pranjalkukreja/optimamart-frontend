@@ -77,7 +77,7 @@ const Shop = () => {
 
   // 1. load products by default on page load
   const loadAllProducts = () => {
-    getProductsByCount(12).then((p) => {
+    getProductsByCount(40).then((p) => {
       setProducts(p.data);
       setLoading(false);
     });

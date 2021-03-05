@@ -112,7 +112,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                     <div className="pdl-product-detail_image" >
                       {images && images.length ? (
                         <>
-                          {images && images.map((i) => <img src={i.url} key={i.public_id} />)}
+                          {images && images.map((i) => <Image src={i.url} key={i.public_id} />)}
                         </>
                         // <Carousel style={{width: '100px'}} showArrows={true} autoPlay infiniteLoop>
                         //   {images && images.map((i) => <img style={{height: '100px'}}  src={i.url} key={i.public_id} />)}
@@ -280,7 +280,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                                 Sat Fat
                      </div>
                             </div>
-                            <div role="listitem" aria-label="Sodium" className="nutrition-quick-facts_single-fact">
+                            <div role="listitem" aria-label="Protein" className="nutrition-quick-facts_single-fact">
                               <div className="nutrition-quick-facts_fact-content"><span className="nutrition-quick-facts_fact-value">
                                 {/* {sodium ? (
                              {sodium}
@@ -289,10 +289,10 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                            )} */}
                                 {sodium}
                               </span> <span className="nutrition-quick-facts_fact-suffix">
-                                  mg
+                                  g
                        </span></div>
                               <div className="nutrition-quick-facts_fact-description">
-                                Sodium
+                              Protein
                      </div>
                             </div>
                             <div role="listitem" aria-label="Sugar" className="nutrition-quick-facts_single-fact">
@@ -376,10 +376,10 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                                          </span></dd>
                               </dl>
                               <dl aria-label="Sodium" className="nutrition-label_row"><dt className="nutrition-label_nutrient text--semi-bold">
-                                Sodium
+                              Protein
                                        </dt>
                                 <dd className="nutrition-label_nutrient-values"><span className="nutrition-label_amount">
-                                  150<span className="nutrition-label_unit">mg</span></span> <span className="nutrition-label_percent">
+                                  150<span className="nutrition-label_unit">g</span></span> <span className="nutrition-label_percent">
                                     7
                                          </span></dd>
                               </dl>
@@ -552,7 +552,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                       <div className="pdl-product-detail_image" >
                         {images && images.length ? (
                           <>
-                            {images && images.map((i) => <img src={i.url} key={i.public_id} />)}
+                            {images && images.map((i) => <Image src={i.url} key={i.public_id} />)}
                           </>
                           // <Carousel style={{width: '100px'}} showArrows={true} autoPlay infiniteLoop>
                           //   {images && images.map((i) => <img style={{height: '100px'}}  src={i.url} key={i.public_id} />)}
@@ -720,10 +720,10 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                                 <div className="nutrition-quick-facts_fact-content"><span className="nutrition-quick-facts_fact-value">
                                   {sodium}
                                 </span> <span className="nutrition-quick-facts_fact-suffix">
-                                    mg
+                                    g
                        </span></div>
                                 <div className="nutrition-quick-facts_fact-description">
-                                  Sodium
+                                Protein
                      </div>
                               </div>
                               <div role="listitem" aria-label="Sugar" className="nutrition-quick-facts_single-fact">
@@ -807,10 +807,10 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                                          </span></dd>
                                 </dl>
                                 <dl aria-label="Sodium" className="nutrition-label_row"><dt className="nutrition-label_nutrient text--semi-bold">
-                                  Sodium
+                                Protein
                                        </dt>
                                   <dd className="nutrition-label_nutrient-values"><span className="nutrition-label_amount">
-                                    150<span className="nutrition-label_unit">mg</span></span> <span className="nutrition-label_percent">
+                                    150<span className="nutrition-label_unit">g</span></span> <span className="nutrition-label_percent">
                                       7
                                          </span></dd>
                                 </dl>
