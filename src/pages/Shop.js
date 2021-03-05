@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   getProductsByCount,
+  getProducts,
   fetchProductsByFilter,
 } from "../functions/product";
 import { getCategories, getCategorySubs } from "../functions/category";
@@ -49,6 +50,9 @@ const Shop = () => {
     "White",
     "Blue",
   ]);
+
+  const [page, setPage] = useState(1);
+
   const [color, setColor] = useState("");
   const [shipping, setShipping] = useState("");
 
@@ -389,31 +393,6 @@ const Shop = () => {
                   <div className="item-list-controls margin-bottom--two weekly-ad_list-controls">
 
                   </div>
-                  {/* {!isNormalScreen ? (
-                    <ul className="tile-list tile-list--triple">
-                      {products.map((product) => (
-                        <ProductCard product={product} />
-                      ))}
-                    </ul>
-                  ) : (
-                      <>
-                        {!isTablet ? (
-                          <ul className="tile-list tile-list--triple">
-
-                            {products.map((product) => (
-                              <ProductCard product={product} />
-                            ))}
-                          </ul>
-                        ) : (
-                            <ul className="tile-list tile-list--double">
-
-                              {products.map((product) => (
-                                <ProductCard product={product} />
-                              ))}
-                            </ul>
-                          )}
-                      </>
-                    )} */}
 
                   {isMobile ? (
                     <ul className="tile-list tile-list--double">

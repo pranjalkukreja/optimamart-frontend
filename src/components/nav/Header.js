@@ -54,7 +54,7 @@ const Header = () => {
 
   const closeSidebar = () => setSidebar(sidebar);
 
-  
+
 
   let dispatch = useDispatch();
   let { user, cart } = useSelector((state) => ({ ...state }));
@@ -164,24 +164,24 @@ const Header = () => {
         <nav aria-label="Main" className="global-header_nav global-header_nav--main spyglass-nav-group_wrapper">
 
 
-            <div className="">
-              <Link to='#' className='menu-bars'>
-                <button onClick={showSidebar} className="menu-button hidden-above-1200">
-                  <div className="menu-button_icon"><svg xmlns="http://www.w3.org/2000/svg" aria-label="menu" viewBox="0 0 38 32" role="presentation" aria-hidden="true" focusable="false" className>
-                    <title lang="en">menu</title>
-                    <desc />
-                    <g fill stroke>
-                      <g>
-                        <path d="M37.38 30.82h-37.38v-4h37.38zM37.38 17.4h-37.38v-4h37.38zM37.38 3.98h-37.38v-3.98h37.38z" fill="#001919" />
-                      </g>
+          <div className="">
+            <Link to='#' className='menu-bars'>
+              <button onClick={showSidebar} className="menu-button hidden-above-1200">
+                <div className="menu-button_icon"><svg xmlns="http://www.w3.org/2000/svg" aria-label="menu" viewBox="0 0 38 32" role="presentation" aria-hidden="true" focusable="false" className>
+                  <title lang="en">menu</title>
+                  <desc />
+                  <g fill stroke>
+                    <g>
+                      <path d="M37.38 30.82h-37.38v-4h37.38zM37.38 17.4h-37.38v-4h37.38zM37.38 3.98h-37.38v-3.98h37.38z" fill="#001919" />
                     </g>
-                  </svg></div>
-                </button>
-              </Link>
-            </div>
-            <div className={sidebar ? 'parentDisable' : ''} style={{overflow:"hidden"}} onClick={showSidebar} >
-              
-            <nav className={sidebar ? 'nav-menu active' : 'nav-menu  '} 
+                  </g>
+                </svg></div>
+              </button>
+            </Link>
+          </div>
+          <div className={sidebar ? 'parentDisable' : ''} style={{ overflow: "hidden" }} onClick={showSidebar} >
+
+            <nav className={sidebar ? 'nav-menu active' : 'nav-menu  '}
             >
               <ul className='nav-menu-items ' onClick={showSidebar} >
                 <li className='navbar-toggle'>
@@ -232,7 +232,7 @@ const Header = () => {
                       <div className="pdl-shopping-mode-tile_content robot-shopping-mode-slot">
                         {user ? (
                           <button onClick={logout}>
-                          <LogoutOutlined />
+                            <LogoutOutlined />
                             <div className>
                               <div className="pdl-shopping-mode-tile_text_content pdl-shopping-mode-tile_text_content--standalone">
                                 <h3 className="text--base-strong"> Logout </h3>
@@ -278,19 +278,19 @@ const Header = () => {
               </ul>
             </nav>
 
-            </div>
+          </div>
 
 
 
 
-                <div className="global-header_logo-container">
+          <div className="global-header_logo-container">
             <a id="brand-logo_link" href="/" aria-label="Home">
               <div className="vector-icon-sns-logo">
                 <img src={logo} alt="Logo" />
               </div>
             </a></div>
 
- 
+
           {/**/}
           <div className="global-header_dropdown-container">
             <ul aria-label="Main" className="global-header_list visible-above-1200">
@@ -322,9 +322,9 @@ const Header = () => {
                 </li>
               </Dropdown>
               <li className="nav-item global-header_nav-item">
-              <button id="nav-my-shop" aria-haspopup="true" className="nav-item_button"> 
-              <a className="text-link" href="tel:+919811777782">+91-98111-61182</a>
-                  
+                <button id="nav-my-shop" aria-haspopup="true" className="nav-item_button">
+                  <a className="text-link" href="tel:+919811777782">+91-98111-61182</a>
+
                 </button>
               </li>
               {/* <Dropdown overlay={MyShopMenu}>

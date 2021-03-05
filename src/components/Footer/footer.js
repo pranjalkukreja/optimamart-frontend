@@ -181,6 +181,7 @@ const Footer = () => {
             WebkitOverflowScrolling: 'touch',
             borderRadius: '4px',
             outline: 'none',
+            zIndex: '1000'
             // padding: '20px'
           }
         }}

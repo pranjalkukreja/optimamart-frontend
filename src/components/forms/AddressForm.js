@@ -30,7 +30,7 @@ const AddressForm = () => {
     const handleName = () => {
         saveUserName(user.token, name).then((res) => {
             if (res.data.ok) {
-                toast.success("Name saved");
+                toast.success("Details saved");
             }
         });
     }
@@ -38,7 +38,6 @@ const AddressForm = () => {
     const handleLastName = () => {
         saveUserLastName(user.token, lastName).then((res) => {
             if (res.data.ok) {
-                toast.success("Last Name saved");
             }
         });
     }
@@ -54,7 +53,6 @@ const AddressForm = () => {
     const handleUnitAddress = () => {
         saveUserUnitAddress(user.token, unitAddress).then((res) => {
             if (res.data.ok) {
-                toast.success("Unit Address saved");
             }
         });
     }
@@ -64,7 +62,6 @@ const AddressForm = () => {
             if (res.data.ok) {
                 toast.success("City saved");
             } else {
-                toast.error("error city")
                 
             }
         });
@@ -73,7 +70,6 @@ const AddressForm = () => {
     const handleUserState= () => {
         saveUserStateAddress(user.token, userState).then((res) => {
             if (res.data.ok) {
-                toast.success("State saved");
             }
         });
     }
@@ -81,14 +77,12 @@ const AddressForm = () => {
     const handleUserZip = () => {
         saveUserZipAddress(user.token, zipCode).then((res) => {
             if (res.data.ok) {
-                toast.success("Zip saved");
             }
         });
     }
     const handleUserNumber = () => {
         saveUserPhoneNumber(user.token, phoneNumber).then((res) => {
             if (res.data.ok) {
-                toast.success("Phone Number saved");
             }
         });
     }

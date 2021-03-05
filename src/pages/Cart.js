@@ -104,7 +104,7 @@ const Cart = ({ history }) => {
               className="btn button cart-modal_button button--third btn-sm button-width--full btn-primary mt-2"
               disabled={cart.length}
             >
-              Minimum Order Value 600
+              Minimum Order Value Card Payment ₹500
             </button>
             )}
 
