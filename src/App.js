@@ -1,5 +1,5 @@
 import React, { useEffect, lazy, Suspense } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { currentUser } from "./functions/auth";
 import { LoadingOutlined } from "@ant-design/icons";
 import secondSubCreate from "./pages/admin/secondSub/secondSubCreate";
+import ReactGA from "react-ga";
 
 // import Login from "./pages/auth/Login";
 // import Register from "./pages/auth/Register";
@@ -86,8 +87,22 @@ const NewCustomer = lazy(() => import("./pages/ExtraPages/NewCustomer"))
 const AboutUs = lazy(() => import("./pages/ExtraPages/AboutUs"))
 const Navbar = lazy(() => import("./components/nav/Navbar"));
 
+function usePageViews() {
+  let location = useLocation();
+  useEffect(() =>{
+    if (!window.GA_INITIALIZED) {
+      ReactGA.initialize("UA-191521249-1");
+      window.GA_INITIALIZED = true;
+    }
+    ReactGA.set({ page: location.pathname});
+    ReactGA.pageview(location.pathname);
+
+  }, [location]);
+}
+
 
 const App = () => {
+  usePageViews()
   const dispatch = useDispatch();
 
   // to check firebase auth state

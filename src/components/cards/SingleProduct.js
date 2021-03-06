@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
 import { Image } from 'antd';
 import { useMediaQuery } from 'react-responsive'
+import grocery from "../../images/grocery.jpg";
 
 
 
@@ -118,7 +119,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
                         //   {images && images.map((i) => <img style={{height: '100px'}}  src={i.url} key={i.public_id} />)}
                         // </Carousel>
                       ) : (
-                          <Card cover={<img src={Laptop} className="mb-3 card-image" />}></Card>
+                          <Card cover={<img src={grocery} className="mb-3 card-image" />}></Card>
                         )}
                     </div>
                   </div>

@@ -17,6 +17,7 @@ const ProductUpdateForm = ({
   arrayOfSubs,
   setArrayOfSubs,
   selectedCategory,
+  selectedBrand,
   // subOptions,
   showSub,
   showSecondSub,
@@ -59,6 +60,7 @@ const ProductUpdateForm = ({
     sodium,
     sugar
   } = values;
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -211,7 +213,7 @@ const ProductUpdateForm = ({
         <select
           name="brand"
           className="form-control"
-          value={brand}
+          value={selectedBrand ? selectedBrand : brand._id}
           onChange={handleChange}
         >
           <option>Please select</option>
@@ -223,7 +225,7 @@ const ProductUpdateForm = ({
             ))}
         </select>
       </div>
-
+      
       <div className="form-group">
         <label>Category</label>
         <select

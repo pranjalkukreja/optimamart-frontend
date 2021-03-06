@@ -38,33 +38,37 @@ const ProductCardInCheckout = ({ p }) => {
   };
 
   const handleQuantityChange = (e) => {
+
     // console.log("available quantity", p.quantity);
     let count = e.target.value < 1 ? 1 : e.target.value;
 
-    if (count > p.quantity) {
-      toast.error(`Max available quantity: ${p.quantity}`);
-      return;
-    }
-
-    let cart = [];
-
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("cart")) {
-        cart = JSON.parse(localStorage.getItem("cart"));
+      if (count > p.quantity) {
+        toast.error(`Max available quantity: ${p.quantity}`);
+        return;
+      }
+  
+      let cart = [];
+  
+      if (typeof window !== "undefined") {
+        if (localStorage.getItem("cart")) {
+          cart = JSON.parse(localStorage.getItem("cart"));
+        }
+  
+        cart.map((product, i) => {
+          if (product._id == p._id) {
+            cart[i].count = count;
+          }
+        });
+  
+        localStorage.setItem("cart", JSON.stringify(cart));
+        dispatch({
+          type: "ADD_TO_CART",
+          payload: cart,
+        });
       }
 
-      cart.map((product, i) => {
-        if (product._id == p._id) {
-          cart[i].count = count;
-        }
-      });
 
-      localStorage.setItem("cart", JSON.stringify(cart));
-      dispatch({
-        type: "ADD_TO_CART",
-        payload: cart,
-      });
-    }
+
   };
 
   const handleRemove = () => {

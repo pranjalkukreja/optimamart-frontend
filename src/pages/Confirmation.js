@@ -1,40 +1,36 @@
-import React from 'react'
-import emailjs from 'emailjs-com';
+import React, {useState} from 'react'
+import Modal from "./Modal"
 
+const BUTTON_WRAPPER_STYLES = {
+  position: 'relative',
+  zIndex: 1
+}
+
+const OTHER_CONTENT_STYLES = {
+  position: 'relative',
+  zIndex: 2,
+  backgroundColor: 'red',
+  padding: '10px'
+}
 
 const Confirmation = () => {
 
-    const handleSubmit = (e) => {
-      e.preventDefault();
+  const [isOpen, setIsOpen] = useState(false)
 
-      emailjs.sendForm('gmail', 'template_d3ybduj', e.target, 'user_1FbCneze2Ijh5xBQ1ARJQ')
-        .then((result) => {
-            console.log(result.text);
-        }, (error) => {
-            console.log(error.text);
-        });
-        e.target.reset()
-      }
-    
-    return (
-        <div>
-         <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Enter username</label>
-        <input id="username" name="name" type="text" />
 
-        <label htmlFor="email">Enter your email</label>
-        <input id="email" name="email" type="email" />
+  return (
+    <>
+      <div style={BUTTON_WRAPPER_STYLES}>
+          <button onClick={() => setIsOpen(true)}>Open Modal</button>
 
-        <label htmlFor="birthdate">Subject</label>
-        <input id="birthdate" name="subject" type="text" />
+          <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+            Fancy Modal
+          </Modal>
+      </div>
 
-        <label htmlFor="birthdate">Message</label>
-        <input id="birthdate" name="message" type="text" />
-
-        <button>Send data!</button>
-      </form>
-        </div>
-    )
+      <div style={OTHER_CONTENT_STYLES}>Other Content</div>
+    </>
+  )
 }
 
 export default Confirmation;
