@@ -166,7 +166,7 @@ const ProductCard = ({ product }) => {
                 <div className="skeleton-loader_wrapper">
                   <div data-v-12a9e0ca role="link" tabIndex={0} className="product-grid-cell_name">
 
-                    <h3 className="product-grid-cell_name-text product-grid-cell_name-text--small product-grid-cell_name-text--clamp-2">
+                    <h3 className="product-grid-cell_name-text product-grid-cell_name-text--small product-grid-cell_name-text--clamp-2 capitalized">
                       {brand.name == 'OPTIMA' ? (
                         <span data-v-12a9e0ca className="vector-icon_inline-text--left">
                           <div data-v-12a9e0ca className="vector-icon-size--xsmall">
@@ -177,7 +177,6 @@ const ProductCard = ({ product }) => {
                       ) : (
                           <h1></h1>
                         )}
-
                       {title}
                     </h3>
                   </div>

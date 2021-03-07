@@ -24638,6 +24638,11 @@ btn--mobile1 {
     position: relative
   }
   
+  .capitalized {
+    text-transform: capitalize;
+
+  }
+
   .pdl-product-detail_image Image {
     max-height: 100%;
     max-width: 100%;
