@@ -21,8 +21,7 @@ const ShowPaymentInfo = ({ order, showStatus = true }) => (
       {" / "}
       <span>
         Orderd on:{" / "}
-        {new Date(order.paymentIntent.created * 1000).toLocaleString()}
-      </span>
+        {new Date(order.createdAt).toLocaleString(undefined, {timeZone: 'Asia/Kolkata'})}      </span>
       {" / "}
       <span>
         Customer: {order.orderdName}, {order.orderdAddress}, {order.orderdUnit}, {order.orderdZip}, {order.orderdNumber}

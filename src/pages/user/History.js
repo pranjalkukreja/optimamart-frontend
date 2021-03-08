@@ -28,9 +28,7 @@ const History = () => {
         <tr>
           <th scope="col">Title</th>
           <th scope="col">Price</th>
-          <th scope="col">Brand</th>
           <th scope="col">Count</th>
-          <th scope="col">Shipping</th>
         </tr>
       </thead>
 
@@ -41,15 +39,14 @@ const History = () => {
               <b>{p.product.title}</b>
             </td>
             <td>{p.product.price}</td>
-            <td>{p.product.brand}</td>
             <td>{p.count}</td>
-            <td>
+            {/* <td>
               {p.product.shipping === "Yes" ? (
                 <CheckCircleOutlined style={{ color: "green" }} />
               ) : (
                 <CloseCircleOutlined style={{ color: "red" }} />
               )}
-            </td>
+            </td> */}
           </tr>
         ))}
       </tbody>
@@ -60,7 +57,7 @@ const History = () => {
     <PDFDownloadLink
       document={<Invoice order={order} />}
       fileName="invoice.pdf"
-      className="btn btn-sm btn-block btn-outline-primary"
+      className="button btn button--prime button-width--med"
     >
       Download PDF
     </PDFDownloadLink>

@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import ShowPaymentInfo from "../cards/ShowPaymentInfo";
-
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import Invoice from "../../components/order/Invoice";
 
 const Orders = ({ orders, handleStatusChange }) => {
 
 
+  const showDownloadLink = (order) => (
+    <PDFDownloadLink
+      document={<Invoice order={order} />}
+      fileName="OptimaMartInvoice.pdf"
+      className="button btn button--prime button-width--med"
+    >
+      Download PDF
+    </PDFDownloadLink>
+  );
   const showOrderInTable = (order) => (
     <table className="table table-bordered">
       <thead className="thead-light">
@@ -31,7 +41,6 @@ const Orders = ({ orders, handleStatusChange }) => {
       </tbody>
     </table>
   );
-
   return (
     <>
       {orders.map((order) => (
@@ -62,6 +71,8 @@ const Orders = ({ orders, handleStatusChange }) => {
           </div>
 
           {showOrderInTable(order)}
+          {showDownloadLink(order)}
+        
         </div>
       ))}
     </>

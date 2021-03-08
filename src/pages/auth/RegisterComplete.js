@@ -91,6 +91,7 @@ const RegisterComplete = ({ history }) => {
 
   return (
     <div className="container p-5">
+      <h1 className="text center">If the email field is empty then please make sure that you are using the same browser when signing up</h1>
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <h4>Register Complete</h4>
