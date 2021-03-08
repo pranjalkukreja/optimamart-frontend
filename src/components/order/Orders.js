@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import ShowPaymentInfo from "../cards/ShowPaymentInfo";
 
+
 const Orders = ({ orders, handleStatusChange }) => {
+
+
   const showOrderInTable = (order) => (
     <table className="table table-bordered">
       <thead className="thead-light">
         <tr>
           <th scope="col">Title</th>
           <th scope="col">Price</th>
-          <th scope="col">Brand</th>
+          <th scope="col">Quantity</th>
         </tr>
       </thead>
 
@@ -20,7 +23,8 @@ const Orders = ({ orders, handleStatusChange }) => {
               <b>{p.product.title}</b>
             </td>
             <td>{p.product.price}</td>
-            <td>{p.product.brand}</td>
+            <td>{p.count}</td>
+  
 
           </tr>
         ))}

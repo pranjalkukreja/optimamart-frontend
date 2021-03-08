@@ -173,7 +173,6 @@ const ProductCard = ({ product }) => {
                             <img src={OMF} alt="" />
                           </div>
                         </span>
-
                       ) : (
                           <h1></h1>
                         )}
@@ -200,8 +199,7 @@ const ProductCard = ({ product }) => {
                 <div className="pdl-add-to-cart_button">
                   {product.quantity < 1 ? (
                     <>
-                        <button className="button button--add-to-cart"> Out of Stock </button>
-
+                      <button className="button button--add-to-cart"> Out of Stock </button>
                     </>
                   ) : (
                       <>
