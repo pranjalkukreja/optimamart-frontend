@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { auth } from "../../firebase";
+import { auth, googleAuthProvider } from "../../firebase";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { MailOutlined, GoogleOutlined } from "@ant-design/icons";
+import { createOrUpdateUser } from "../../functions/auth";
+import { Button } from "antd";
 
 
 const Register = ({ history }) => {
@@ -50,18 +53,78 @@ const Register = ({ history }) => {
     </form>
   );
 
+  const roleBasedRedirect = (res) => {
+    // check if intended
+    let intended = history.location.state;
+    if (intended) {
+      history.push(intended.from);
+    } else {
+      if (res.data.role === "admin") {
+        history.push("/admin/dashboard");
+      } else {
+        history.push("/user/dashboard");
+      }
+    }
+  };
+
+  let dispatch = useDispatch();
+
+
+  const googleLogin = async () => {
+    auth
+      .signInWithPopup(googleAuthProvider)
+      .then(async (result) => {
+        const { user } = result;
+        const idTokenResult = await user.getIdTokenResult();
+        createOrUpdateUser(idTokenResult.token)
+          .then((res) => {
+            dispatch({
+              type: "LOGGED_IN_USER",
+              payload: {
+                name: res.data.name,
+                email: res.data.email,
+                token: idTokenResult.token,
+                role: res.data.role,
+                _id: res.data._id,
+              },
+            });
+            roleBasedRedirect(res);
+          })
+          .catch((err) => console.log(err));
+        // history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message);
+      });
+  };
+
   return (
     <div className="container p-5">
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <h4>Register</h4>
           {registerForm()}
+          <h1 className="text-center">OR</h1>
+            <br/>
+          <Button
+            onClick={googleLogin}
+            className="mb-3"
+            className="button button--prime button-width--full st_button"
+            block
+            shape="round"
+            icon={<GoogleOutlined />}
+            size="large"
+          >
+            Signup with Google (Easier)
+          </Button>
 
           <div className="text-center border--top">
             <Link to="/login" className="button button--link button--second button-width--full">
               Sign In 
             </Link>
           </div>
+
         </div>
       </div>
     </div>

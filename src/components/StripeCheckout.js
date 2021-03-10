@@ -78,11 +78,14 @@ const StripeCheckout = ({ history }) => {
           emptyUserCart(user.token);
         }
       });
+      elements.getElement(CardElement).clear();
+
       // empty user cart from redux store and local storage
       console.log(JSON.stringify(payload, null, 4));
       setError(null);
       setProcessing(false);
       setSucceeded(true);
+
       // history1.push('/');
       emailjs.sendForm('gmail', 'template_d3ybduj', e.target, 'user_1FbCneze2Ijh5xBQ1ARJQ')
       .then((result) => {

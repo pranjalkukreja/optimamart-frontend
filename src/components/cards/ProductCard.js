@@ -105,6 +105,10 @@ const ProductCard = ({ product }) => {
     }
   };
 
+  const handleCartItems = () => {
+    
+  };
+
   const handleAddToWishlist = (e) => {
     e.preventDefault();
     addToWishlist(product._id, user.token).then((res) => {
